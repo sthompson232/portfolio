@@ -1,5 +1,5 @@
 import * as THREE from 'three' 
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, ChromaticAberration, DepthOfField } from '@react-three/postprocessing'
 import clamp from 'clamp'
@@ -21,46 +21,45 @@ const useStyles = makeStyles((theme) => ({
     header: {
         top: 5
     },
-    heroText: {
-        [theme.breakpoints.down('sm')]: {
-            fontSize: 100,
-        },
-        fontSize: 150,
-        fontWeight: 700
-    },
-    heroTextWrapper: {
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: 100,
-        },
-        position: "absolute",
-        top: "5vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-    },
+    // heroText: {
+    //     [theme.breakpoints.down('sm')]: {
+    //         fontSize: 100,
+    //     },
+    //     fontSize: 150,
+    //     fontWeight: 700
+    // },
+    // heroTextWrapper: {
+    //     [theme.breakpoints.down('sm')]: {
+    //         paddingTop: 100,
+    //     },
+    //     position: "absolute",
+    //     top: "5vh",
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //     height: "100vh",
+    // },
 }));
 
-const colors = require('nice-color-palettes');
-
-let palette = colors[96]
-
-const easeInOutQuint = function(pos) {
-  if ((pos/=0.5) < 1) return 0.5*Math.pow(pos, 5);
-  return 0.5 * (Math.pow((pos-2),5) + 2);
-}
 
 const tempObject = new THREE.Object3D()
 
 
 
-function Shape({ count }) {
+const Shape = ({ count, paletteNumber }) => {
+
+  const colors = require('nice-color-palettes');
+
+  const easeInOutQuint = function(pos) {
+  if ((pos/=0.5) < 1) return 0.5*Math.pow(pos, 5);
+  return 0.5 * (Math.pow((pos-2),5) + 2);
+  }
+
+  let palette = colors[paletteNumber]
+
   const mesh = useRef()
-  const prevRef = useRef()
 
   const [hovered, setHovered] = useState(false)
-
-  useEffect(() => void (prevRef.current = hovered), [hovered])
 
   useFrame((state) => {
     const mouse = state.mouse
@@ -115,8 +114,10 @@ function Shape({ count }) {
 
 
 function App() {
+
     const classes = useStyles();
     const [darkMode, setDarkMode] = useState(false)
+    const [paletteNumber, setPaletteNumber] = useState(darkMode ? 94 : 96)
 
     let theme = createMuiTheme({
     palette: {
@@ -149,14 +150,14 @@ function App() {
                 preserveDrawingBuffer: true,
             }}
             onCreated={({gl}) => {
-                gl.setClearColor(palette[4])
+                gl.setClearColor(paletteNumber[4])
             }}
             colorManagement
             camera={{
                 position: [-6, 7, -3]
             }}>
                 <ambientLight intensity={0.5}/>
-                <Shape position={[0, 0, 0]} count={20} />
+                <Shape position={[0, 0, 0]} count={20} paletteNumber={paletteNumber}/>
                 <EffectComposer>
                     <DepthOfField
                         target={[-6, 7, -3]}
@@ -170,14 +171,20 @@ function App() {
             <ThemeProvider theme={theme}>
                 <Paper>
                     <Grid className={classes.header}>
-                        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+                        <Switch 
+                            checked={darkMode} 
+                            onChange={() => {
+                                setDarkMode(!darkMode) 
+                                setPaletteNumber(darkMode ? 96 : 94)
+                            }} 
+                        />
                     </Grid>
                     <Grid className={classes.heroTextWrapper}>
                         <Typography variant="h1" className={classes.heroText} color="secondary">Full stack developer</Typography>
                     </Grid>
                     <div>
                         <Typography>This is my portfolio</Typography>
-                        <Button variant="contained" color="primary" size="large">Register</Button>
+                        <Button variant="contained" color="primary" size="large" onClick={() => setPaletteNumber(Math.floor(Math.random() * 100) + 1)}>New color</Button>
 
                     </div>
                 </Paper>
