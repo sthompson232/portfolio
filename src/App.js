@@ -8,6 +8,7 @@ import {
     Button, 
     Typography, 
     Switch,
+    Grid,
     Paper, 
     ThemeProvider, 
     createMuiTheme, 
@@ -17,9 +18,26 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
+    header: {
+        top: 5
+    },
     heroText: {
-        fontSize: 200,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 100,
+        },
+        fontSize: 150,
         fontWeight: 700
+    },
+    heroTextWrapper: {
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: 100,
+        },
+        position: "absolute",
+        top: "5vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
     },
 }));
 
@@ -140,24 +158,27 @@ function App() {
                 <ambientLight intensity={0.5}/>
                 <Shape position={[0, 0, 0]} count={20} />
                 <EffectComposer>
-                <DepthOfField
+                    <DepthOfField
                         target={[-6, 7, -3]}
                         focalLength={0.03}
                         bokehScale={10}
                         height={500}
                     />
-                <ChromaticAberration offset={[-0.001, 0.004]} />
+                    <ChromaticAberration offset={[-0.001, 0.004]} />
                 </EffectComposer>
             </Canvas>
             <ThemeProvider theme={theme}>
                 <Paper>
-                    <main>
+                    <Grid className={classes.header}>
+                        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+                    </Grid>
+                    <Grid className={classes.heroTextWrapper}>
                         <Typography variant="h1" className={classes.heroText} color="secondary">Full stack developer</Typography>
-                    </main>
+                    </Grid>
                     <div>
                         <Typography>This is my portfolio</Typography>
                         <Button variant="contained" color="primary" size="large">Register</Button>
-                        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+
                     </div>
                 </Paper>
             </ThemeProvider>
