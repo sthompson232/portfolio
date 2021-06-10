@@ -1,6 +1,5 @@
 import { createMuiTheme } from '@material-ui/core';
 
-
 export let lightTheme = createMuiTheme({
     palette: {
         primary: {

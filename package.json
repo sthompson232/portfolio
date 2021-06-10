@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@react-spring/three": "^9.2.3",
     "@react-spring/web": "^9.2.3",
     "@react-three/drei": "^6.0.1",
