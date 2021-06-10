@@ -8,9 +8,7 @@ import "./ColorMaterial"
 const tempObject = new THREE.Object3D()
 
 
-export const Shape = ({ count, paletteNumber }) => {
-
-  const colors = require('nice-color-palettes');
+export const Shape = ({ count, paletteNumber, colors }) => {
 
   const easeInOutQuint = function(pos) {
   if ((pos/=0.5) < 1) return 0.5*Math.pow(pos, 5);

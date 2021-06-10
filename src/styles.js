@@ -1,34 +1,25 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+const light = '#ffffff'
+const dark = '#0E0E0E'
+
 export const useStyles = makeStyles((theme) => ({
-    lightPrimary: {
-        color: '#000000'
+
+    white: {
+        color: light
     },
-    darkPrimary: {
-        color: '#ffffff'
+    black: {
+        color: dark
     },
-    lightSecondary: {
-        color: '#ffffff'
+    backgroundWhite: {
+        backgroundColor: light
     },
-    darkSecondary: {
-        color: '#000000'
+    backgroundBlack: {
+        backgroundColor: dark
     },
-    buttonLight: {
-        color: '#000000',
-        backgroundColor: '#ffffff'
-    },
-    buttonDark: {
-        color: '#ffffff',
-        backgroundColor: '#000000'
-    },
-    backgroundLight: {
-        background: '#ffffff'
-    },
-    backgroundDark: {
-        background: '#000000'
-    },
+
     heroText: {
-        fontSize: '7rem',
+        fontSize: '6rem',
         fontWeight: 700,
         fontFamily: `'Poppins', sans-serif`
     }
