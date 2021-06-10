@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Loader } from './Loader'
-import { Landing } from './Landing'
-import "./ColorMaterial"
+import { Loader } from './components/Loader'
+import { Landing } from './components/Landing'
+import "./components/ColorMaterial"
 import { 
     Typography, 
     Paper,

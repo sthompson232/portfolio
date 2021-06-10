@@ -7,7 +7,7 @@ import "./ColorMaterial"
 import { 
     Typography, 
 } from '@material-ui/core';
-import { useStyles } from './styles'
+import { useStyles } from '../styles'
 
 export const Landing = ({ paletteNumber, paletteActive, colors, darkMode }) => {
     const classes = useStyles();
