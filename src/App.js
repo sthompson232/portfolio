@@ -1,38 +1,70 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { EffectComposer, ChromaticAberration, DepthOfField, Bloom } from '@react-three/postprocessing'
+import { EffectComposer, ChromaticAberration, DepthOfField } from '@react-three/postprocessing'
 import { Html } from '@react-three/drei'
 import { Loader } from './Loader'
 import { Shape } from './Shape'
+import { Navbar } from './Navbar'
 import "./ColorMaterial"
 import { 
     Typography, 
     Paper,
     ThemeProvider, 
-    IconButton
+    IconButton,
 } from '@material-ui/core';
 import Brightness2OutlinedIcon from '@material-ui/icons/Brightness2Outlined';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
-import { lightTheme, darkTheme } from './theme'
+import { theme } from './theme'
 import { useStyles } from './styles'
+
+
+
+function Header({ children, sticky=false, className, ...rest }){
+    const [isSticky, setIsSticky] = useState(false)
+    const ref = React.createRef()
+    
+    // mount 
+    useEffect(()=>{
+      const cachedRef = ref.current,
+            observer = new IntersectionObserver(
+              ([e]) => setIsSticky(e.intersectionRatio < 1),
+              {threshold: [1]}
+            )
+  
+      observer.observe(cachedRef)
+      
+      // unmount
+      return function(){
+        observer.unobserve(cachedRef)
+      }
+    }, [])
+    
+    return (
+        <header style={{ top: '-100' }} className={className + (isSticky ? " isSticky" : "")} ref={ref} {...rest}>
+            {children}
+        </header>
+    )
+  }
+
+
 
 const App = () => {
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
-
-    useEffect(() => {
-        console.log(colors[paletteNumber][4])    
-    })
+    const startPalette = [8, 17, 30, 31, 38, 45, 50, 52, 62, 75, 83, 85, 89] 
 
     const [darkMode, setDarkMode] = useState(false)
-    const [paletteActive, setPaletteActive] = useState(false)
-    const [paletteNumber, setPaletteNumber] = useState(darkMode ? 36 : 11)
-    const [theme] = useState(darkMode ? darkTheme : lightTheme)
+    const [paletteActive, setPaletteActive] = useState(true)
+    const [paletteNumber, setPaletteNumber] = useState(paletteActive ? 
+                                                        startPalette[Math.floor(Math.random() * startPalette.length)] : 
+                                                        (darkMode ? 36 : 11)
+                                                        )
 
     return (
         <ThemeProvider theme={theme}>
+            <Navbar />
             <Canvas
                 gl={{
                     preserveDrawingBuffer: true,
@@ -68,8 +100,8 @@ const App = () => {
                                 }} 
                             >
                             {!darkMode ? 
-                            <Brightness2OutlinedIcon style={{ fontSize: 50, color: colors[paletteNumber][4] }} /> : 
-                            <Brightness7Icon style={{ fontSize: 50, color: colors[paletteNumber][4] }} />
+                            <Brightness2OutlinedIcon style={{ fontSize: 60, color: colors[paletteNumber][4] }} /> : 
+                            <Brightness7Icon style={{ fontSize: 60, color: colors[paletteNumber][4] }} />
                             }
                             </IconButton>
                             <IconButton
@@ -78,7 +110,7 @@ const App = () => {
                                     setPaletteActive(true)
                                 }}
                             >
-                                <PaletteIcon style={{ fontSize: 50, color: colors[paletteNumber][4] }} /> 
+                                <PaletteIcon style={{ fontSize: 60, color: colors[paletteNumber][4] }} /> 
                             </IconButton>
                         </div>
 
@@ -101,8 +133,8 @@ const App = () => {
                                 }} 
                             >
                             {!darkMode ? 
-                            <Brightness2OutlinedIcon className={classes.black} style={{ fontSize: 50 }} /> : 
-                            <Brightness7Icon className={classes.white} style={{ fontSize: 50 }} />
+                            <Brightness2OutlinedIcon className={classes.black} style={{ fontSize: 60 }} /> : 
+                            <Brightness7Icon className={classes.white} style={{ fontSize: 60 }} />
                             }
                             </IconButton>
                             <IconButton
@@ -112,8 +144,8 @@ const App = () => {
                                 }}
                             >
                                 {darkMode ? 
-                                <PaletteIcon className={classes.white} style={{ fontSize: 50 }} /> : 
-                                <PaletteIcon  className={classes.black} style={{ fontSize: 50 }} />
+                                <PaletteIcon className={classes.white} style={{ fontSize: 60 }} /> : 
+                                <PaletteIcon  className={classes.black} style={{ fontSize: 60 }} />
                                 }
                             </IconButton>
                         </div>
@@ -121,13 +153,12 @@ const App = () => {
                 </Html>
                 <EffectComposer>
                     <DepthOfField
-                        target={[-6, 7, -3]}
+                        target={[-8, 8, -4]}
                         focalLength={0.02}
                         bokehScale={10}
                         height={500}
                     />
                     <ChromaticAberration offset={[-0.001, 0.002]} />
-                    <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.9} height={100} />
                 </EffectComposer>
             </Canvas>
             <Loader />
@@ -143,7 +174,6 @@ const App = () => {
                         classes.black
                     }>Full stack developer</Typography>
             </Paper>
-
         </ThemeProvider>
     )
 }
