@@ -1,52 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { EffectComposer, ChromaticAberration, DepthOfField } from '@react-three/postprocessing'
-import { Html } from '@react-three/drei'
+import React, { useState } from 'react'
 import { Loader } from './Loader'
-import { Shape } from './Shape'
-import { Navbar } from './Navbar'
+import { Landing } from './Landing'
 import "./ColorMaterial"
 import { 
     Typography, 
     Paper,
     ThemeProvider, 
     IconButton,
+    AppBar,
+    Toolbar,
+    Grid
 } from '@material-ui/core';
 import Brightness2OutlinedIcon from '@material-ui/icons/Brightness2Outlined';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
-
-
-
-function Header({ children, sticky=false, className, ...rest }){
-    const [isSticky, setIsSticky] = useState(false)
-    const ref = React.createRef()
-    
-    // mount 
-    useEffect(()=>{
-      const cachedRef = ref.current,
-            observer = new IntersectionObserver(
-              ([e]) => setIsSticky(e.intersectionRatio < 1),
-              {threshold: [1]}
-            )
-  
-      observer.observe(cachedRef)
-      
-      // unmount
-      return function(){
-        observer.unobserve(cachedRef)
-      }
-    }, [])
-    
-    return (
-        <header style={{ top: '-100' }} className={className + (isSticky ? " isSticky" : "")} ref={ref} {...rest}>
-            {children}
-        </header>
-    )
-  }
-
 
 
 const App = () => {
@@ -64,103 +33,70 @@ const App = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Navbar />
-            <Canvas
-                gl={{
-                    preserveDrawingBuffer: true,
-                    alpha: false, 
-                    antialias: true
-                }}
-                onCreated={({gl}) => {
-                    gl.setClearColor(paletteNumber[4])
-                }}
-                colorManagement={true}
-                camera={{
-                    position: [-10.8, 7.6, -6],
-                    fov: 50,
-                    near: 1, 
-                }}
-            >
-                <Shape position={[0, 0, 0]} count={20} paletteNumber={paletteNumber} colors={colors}/>
-                <Html center>
-                    {paletteActive ? 
-                        <div>
-                            <Typography 
-                            variant="h1" 
-                            style={{ color: colors[paletteNumber][4]}}
-                            className={classes.heroText}
-                            >
-                                Hi, I'm a London-based full stack developer...
-                            </Typography>
-                            <IconButton 
-                                onClick={() => {
-                                    setDarkMode(!darkMode) 
-                                    setPaletteActive(false)
-                                    setPaletteNumber(darkMode ? 11 : 36)
-                                }} 
-                            >
-                            {!darkMode ? 
-                            <Brightness2OutlinedIcon style={{ fontSize: 60, color: colors[paletteNumber][4] }} /> : 
-                            <Brightness7Icon style={{ fontSize: 60, color: colors[paletteNumber][4] }} />
-                            }
-                            </IconButton>
-                            <IconButton
-                                onClick={() => { 
-                                    setPaletteNumber(Math.floor(Math.random() * 100))
-                                    setPaletteActive(true)
-                                }}
-                            >
-                                <PaletteIcon style={{ fontSize: 60, color: colors[paletteNumber][4] }} /> 
-                            </IconButton>
-                        </div>
-
-                    :
-
-                        <div>
-                            <Typography 
-                                variant="h1" 
-                                className={`${darkMode 
-                                    ? classes.white
-                                    : classes.black} ${classes.heroText}`}
-                            >
-                                Hi, I'm a London-based full stack developer...
-                            </Typography>
-                            <IconButton 
-                                onClick={() => {
-                                    setDarkMode(!darkMode) 
-                                    setPaletteActive(false)
-                                    setPaletteNumber(darkMode ? 11 : 36)
-                                }} 
-                            >
-                            {!darkMode ? 
-                            <Brightness2OutlinedIcon className={classes.black} style={{ fontSize: 60 }} /> : 
-                            <Brightness7Icon className={classes.white} style={{ fontSize: 60 }} />
-                            }
-                            </IconButton>
-                            <IconButton
-                                onClick={() => { 
-                                    setPaletteNumber(Math.floor(Math.random() * 100))
-                                    setPaletteActive(true)
-                                }}
-                            >
-                                {darkMode ? 
-                                <PaletteIcon className={classes.white} style={{ fontSize: 60 }} /> : 
-                                <PaletteIcon  className={classes.black} style={{ fontSize: 60 }} />
+            <AppBar position="fixed">
+                <Toolbar style={paletteActive ? {backgroundColor: '#0E0E0E'} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})}>
+                    <Grid justify="flex-end" alignItems="center" container>
+                        <Grid item>
+                            {paletteActive ? 
+                                <div>
+                                    <IconButton 
+                                        onClick={() => {
+                                            setDarkMode(!darkMode) 
+                                            setPaletteActive(false)
+                                            setPaletteNumber(darkMode ? 11 : 36)
+                                        }} 
+                                    >
+                                    {!darkMode ? 
+                                    <Brightness2OutlinedIcon style={{ fontSize: 50, color: colors[paletteNumber][2] }} /> : 
+                                    <Brightness7Icon style={{ fontSize: 50, color: colors[paletteNumber][2] }} />
+                                    }
+                                    </IconButton>
+                                    <IconButton
+                                        onClick={() => { 
+                                            setPaletteNumber(Math.floor(Math.random() * 100))
+                                            setPaletteActive(true)
+                                        }}
+                                    >
+                                        <PaletteIcon style={{ fontSize: 50, color: colors[paletteNumber][2] }} /> 
+                                    </IconButton>
+                                </div>
+                                :
+                                <div>
+                                    <IconButton 
+                                        onClick={() => {
+                                            setDarkMode(!darkMode) 
+                                            setPaletteActive(false)
+                                            setPaletteNumber(darkMode ? 11 : 36)
+                                        }} 
+                                    >
+                                    {!darkMode ? 
+                                    <Brightness2OutlinedIcon className={classes.black} style={{ fontSize: 50 }} /> : 
+                                    <Brightness7Icon className={classes.white} style={{ fontSize: 50 }} />
+                                    }
+                                    </IconButton>
+                                    <IconButton
+                                        onClick={() => { 
+                                            setPaletteNumber(Math.floor(Math.random() * 100))
+                                            setPaletteActive(true)
+                                        }}
+                                    >
+                                        {darkMode ? 
+                                        <PaletteIcon className={classes.white} style={{ fontSize: 50 }} /> : 
+                                        <PaletteIcon  className={classes.black} style={{ fontSize: 50 }} />
+                                        }
+                                    </IconButton>
+                                </div>
                                 }
-                            </IconButton>
-                        </div>
-                    }
-                </Html>
-                <EffectComposer>
-                    <DepthOfField
-                        target={[-8, 8, -4]}
-                        focalLength={0.02}
-                        bokehScale={10}
-                        height={500}
-                    />
-                    <ChromaticAberration offset={[-0.001, 0.002]} />
-                </EffectComposer>
-            </Canvas>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+            <Landing 
+                paletteNumber={paletteNumber}
+                paletteActive={paletteActive}
+                colors={colors}
+                darkMode={darkMode}
+            />
             <Loader />
             <Paper 
                 className={darkMode ? 
