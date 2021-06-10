@@ -17,7 +17,6 @@ export const useStyles = makeStyles((theme) => ({
     backgroundBlack: {
         backgroundColor: dark
     },
-
     heroText: {
         [theme.breakpoints.down('xs')]: {
             fontSize: '3rem'
@@ -38,5 +37,16 @@ export const useStyles = makeStyles((theme) => ({
         fontWeight: 700,
         fontFamily: `'Poppins', sans-serif`,
         pointerEvents: 'none'
+    },
+    headingText: {
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '4rem'
+        },
+        [theme.breakpoints.only('md')]: {
+            fontSize: '5rem'
+        },
+        fontWeight: 700,
+        fontFamily: `'Poppins', sans-serif`,
+        textAlign: 'center'
     }
 }));

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useStyles } from '../styles'
-import { Typography } from '@material-ui/core'
-import react from '../static/react.svg'
-import django from '../static/django.svg'
+import { Typography, Grid } from '@material-ui/core'
 import { Typer } from './Typer'
+import { DjangoIcon } from './helpers/DjangoIcon'
+import { ReactIcon } from './helpers/ReactIcon'
+
+
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
     const classes = useStyles();
@@ -11,8 +13,8 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
     const [textColor, setTextColor] = useState('')
 
     useEffect(() => {
-        setTextColor(paletteActive ? (colors[paletteNumber][4]) : (darkMode ? '#077000' : '#ff000f'))
-    })
+        setTextColor(paletteActive ? (colors[paletteNumber][4]) : (darkMode ? '#ffffff' : '#0E0E0E'))
+    }, [paletteActive, colors, paletteNumber, darkMode])
 
     return (
         <>
@@ -38,15 +40,18 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             darkMode={darkMode}
             textColor={textColor}
         />
-        <img src={react} className="logo" alt="react logo" />
-        <img src={django} className="logo" alt="django logo" />
         <Typography 
-        variant="h6" 
-        className={darkMode ? 
-            classes.white : 
-            classes.black
-        }>Full stack developer</Typography>
-
+        variant="h1" 
+        className={classes.headingText}
+        style={{color:textColor}}>But my go to's are...</Typography>
+        <Grid container>
+            <Grid item xs={6}>
+            <ReactIcon fill={textColor} />
+            </Grid>
+            <Grid item xs={6}>
+            <DjangoIcon fill={textColor} />
+            </Grid>
+        </Grid>
         </>
     )
 }
