@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, ChromaticAberration, DepthOfField } from '@react-three/postprocessing'
+import { Html } from '@react-three/drei'
 import clamp from 'clamp'
 import "./ColorMaterial"
 import { 
@@ -18,27 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
-    header: {
-        top: 5
-    },
-    // heroText: {
-    //     [theme.breakpoints.down('sm')]: {
-    //         fontSize: 100,
-    //     },
-    //     fontSize: 150,
-    //     fontWeight: 700
-    // },
-    // heroTextWrapper: {
-    //     [theme.breakpoints.down('sm')]: {
-    //         paddingTop: 100,
-    //     },
-    //     position: "absolute",
-    //     top: "5vh",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     height: "100vh",
-    // },
+
 }));
 
 
@@ -148,6 +129,8 @@ function App() {
             <Canvas
             gl={{
                 preserveDrawingBuffer: true,
+                alpha: false, 
+                antialias: true
             }}
             onCreated={({gl}) => {
                 gl.setClearColor(paletteNumber[4])
