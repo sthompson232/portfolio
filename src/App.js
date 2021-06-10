@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Loader } from './components/Loader'
 import { Landing } from './components/Landing'
+import { Content } from './components/Content'
 import "./components/ColorMaterial"
 import { 
-    Typography, 
     Paper,
     ThemeProvider, 
     IconButton,
@@ -24,12 +24,13 @@ const App = () => {
     const classes = useStyles();
     const startPalette = [8, 17, 30, 31, 38, 45, 50, 52, 62, 75, 83, 85, 89] 
 
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(true)
     const [paletteActive, setPaletteActive] = useState(true)
     const [paletteNumber, setPaletteNumber] = useState(paletteActive ? 
                                                         startPalette[Math.floor(Math.random() * startPalette.length)] : 
                                                         (darkMode ? 36 : 11)
                                                         )
+    let chosenOne = colors[paletteNumber][1]
 
     return (
         <ThemeProvider theme={theme}>
@@ -99,16 +100,18 @@ const App = () => {
             />
             <Loader />
             <Paper 
+                style={paletteActive ? {backgroundColor: chosenOne} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})}
+                square
                 className={darkMode ? 
                 classes.backgroundBlack :
                 classes.backgroundWhite
             }>
-                <Typography 
-                    variant="h1" 
-                    className={darkMode ? 
-                        classes.white : 
-                        classes.black
-                    }>Full stack developer</Typography>
+                <Content
+                    paletteNumber={paletteNumber}
+                    paletteActive={paletteActive}
+                    colors={colors}
+                    darkMode={darkMode}
+                />
             </Paper>
         </ThemeProvider>
     )

@@ -19,8 +19,24 @@ export const useStyles = makeStyles((theme) => ({
     },
 
     heroText: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '3rem'
+        },
+        [theme.breakpoints.only('sm')]: {
+            fontSize: '4rem'
+        },
+        [theme.breakpoints.only('md')]: {
+            fontSize: '5rem'
+        },
+        [theme.breakpoints.only('lg')]: {
+            fontSize: '6rem'
+        },
+        [theme.breakpoints.only('xl')]: {
+            fontSize: '8rem'
+        },
         fontSize: '6rem',
         fontWeight: 700,
-        fontFamily: `'Poppins', sans-serif`
+        fontFamily: `'Poppins', sans-serif`,
+        pointerEvents: 'none'
     }
 }));
