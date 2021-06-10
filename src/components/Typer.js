@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-
-const TYPING_SPEED = 150;
-const DELETING_SPEED = 100;
+const TYPING_SPEED = 140;
+const DELETING_SPEED = 80;
 
 export class Typer extends React.Component {
 
@@ -10,7 +9,7 @@ export class Typer extends React.Component {
     text: '',
     isDeleting: false,
     loopNum: 0,
-    typingSpeed: TYPING_SPEED
+    typingSpeed: TYPING_SPEED,
   }
 
   componentDidMount() {
@@ -42,7 +41,7 @@ export class Typer extends React.Component {
 
   render() {
     return (
-      <h1>{ this.props.heading }&nbsp;
+      <h1 className="typer" style={{color: this.props.textColor}}>{ this.props.heading }&nbsp;
         <span>{ this.state.text }</span>
         <span id="cursor"></span>
       </h1>

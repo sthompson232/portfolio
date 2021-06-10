@@ -23,13 +23,13 @@ export const useStyles = makeStyles((theme) => ({
             fontSize: '3rem'
         },
         [theme.breakpoints.only('sm')]: {
-            fontSize: '4rem'
-        },
-        [theme.breakpoints.only('md')]: {
             fontSize: '5rem'
         },
-        [theme.breakpoints.only('lg')]: {
+        [theme.breakpoints.only('md')]: {
             fontSize: '6rem'
+        },
+        [theme.breakpoints.only('lg')]: {
+            fontSize: '7rem'
         },
         [theme.breakpoints.only('xl')]: {
             fontSize: '8rem'
