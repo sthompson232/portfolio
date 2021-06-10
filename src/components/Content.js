@@ -3,7 +3,7 @@ import { useStyles } from '../styles'
 import { Typography } from '@material-ui/core';
 import react from '../static/react.svg'
 import django from '../static/django.svg'
-
+import { Typer } from './Typer'
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
     const classes = useStyles();
@@ -18,6 +18,23 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             classes.white : 
             classes.black
         }>Full stack developer</Typography>
+        <Typer
+    heading="I love to use"
+    dataText={[  
+      'Django.', 
+      'React.',
+      'Three.js',
+      'GraphQL.',
+      'Redux.',
+      'Celery.',
+      'Redis.',
+      'Bootstrap.',
+      'Material-UI.',
+      'Tailwind CSS.',
+      'Alpine.js.',
+      'React-Three-Fiber.'
+    ]} 
+  />
         </>
     )
 }
