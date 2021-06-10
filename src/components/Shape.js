@@ -28,8 +28,8 @@ export const Shape = ({ count, paletteNumber, colors }) => {
     let i = 0
     let number = count
 
-    mesh.current.rotation.x = mouse.y * 0.02
-    mesh.current.rotation.y = mouse.x * 0.02
+    mesh.current.rotation.x = -mouse.y * 0.02
+    mesh.current.rotation.y = -mouse.x * 0.02
 
     for (let x = 0; x <= number; x++)
       for (let z = 0; z <= number; z++) {

@@ -11,6 +11,7 @@ export const HeroText = ({ paletteNumber, paletteActive, colors, darkMode }) => 
 
     return (
         <Html
+        zIndexRange={[1, 0]}
         style={{
             position: 'absolute',
             top: -size.height / 5,
