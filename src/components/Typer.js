@@ -28,12 +28,13 @@ export class Typer extends React.Component {
     });
 
     if (!isDeleting && text === fullText) {     
-      setTimeout(() => this.setState({ isDeleting: true }), 500);   
+      setTimeout(() => this.setState({ isDeleting: true }), 600);   
     } else if (isDeleting && text === '') {
-      this.setState({
+      setTimeout(() => this.setState({
         isDeleting: false,
         loopNum: loopNum + 1
-      });      
+      }), 400)
+    
     }
 
     setTimeout(this.handleType, typingSpeed);
@@ -43,7 +44,7 @@ export class Typer extends React.Component {
     return (
       <h1 className="typer" style={{color: this.props.textColor}}>{ this.props.heading }&nbsp;
         <span>{ this.state.text }</span>
-        <span id="cursor"></span>
+        <span style={{ borderLeft: `.1em solid ${this.props.textColor}` }} id="cursor"></span>
       </h1>
     );
   }

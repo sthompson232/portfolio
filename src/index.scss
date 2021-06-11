@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+
+$black: #0E0E0E;
+$white: #ffffff;
+$font: 'Poppins', sans-serif;
+
 * {
   box-sizing: border-box;
 }
@@ -14,9 +19,8 @@ body,
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font
 }
-
 
 header {
   z-index: 10;
@@ -53,4 +57,15 @@ header {
 
 .logo {
   width: 200px;
+}
+
+
+#cursor {
+  animation: blink .7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }

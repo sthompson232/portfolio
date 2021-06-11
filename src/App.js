@@ -41,6 +41,7 @@ const App = () => {
                             {paletteActive ? 
                                 <div>
                                     <IconButton 
+                                        style={{ margin: '0 20px'}}
                                         onClick={() => {
                                             setDarkMode(!darkMode) 
                                             setPaletteActive(false)
@@ -53,6 +54,7 @@ const App = () => {
                                     }
                                     </IconButton>
                                     <IconButton
+                                        style={{ marginRight: '20px'}}
                                         onClick={() => { 
                                             setPaletteNumber(Math.floor(Math.random() * 100))
                                             setPaletteActive(true)
@@ -64,6 +66,7 @@ const App = () => {
                                 :
                                 <div>
                                     <IconButton 
+                                        style={{ margin: '0 20px'}}
                                         onClick={() => {
                                             setDarkMode(!darkMode) 
                                             setPaletteActive(false)

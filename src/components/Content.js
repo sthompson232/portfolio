@@ -43,7 +43,7 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
         <Typography 
         variant="h1" 
         className={classes.headingText}
-        style={{color:textColor}}>But my go to's are...</Typography>
+        style={{color:textColor}}>But you'll mostly find me using</Typography>
         <Grid container>
             <Grid item xs={6}>
             <ReactIcon fill={textColor} />
