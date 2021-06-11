@@ -51,11 +51,32 @@ export const useStyles = makeStyles((theme) => ({
     },
     bioImage: {
         width: '100%',
-        height: 'auto'
+        height: 'auto',
+        maxWidth: '500px',
+        [theme.breakpoints.down('xs')]: {
+            maxWidth: '250px'
+        },
+        [theme.breakpoints.only('sm')]: {
+            maxWidth: '300px'
+        },
+        [theme.breakpoints.only('md')]: {
+            maxWidth: '400px'
+        },
     },
     paraText: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.8rem'
+        },
+        [theme.breakpoints.only('sm')]: {
+            fontSize: '3rem'
+        },
+        [theme.breakpoints.only('md')]: {
+            fontSize: '3.5rem'
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize: '4rem'
+        },
         fontWeight: 600,
-        fontSize: '4rem',
         fontFamily: `'Poppins', sans-serif`,
     }
 }));

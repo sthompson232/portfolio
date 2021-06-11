@@ -1,5 +1,14 @@
 import { createMuiTheme } from '@material-ui/core';
 
+const breakpointValues = {
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1200,
+  xl: 1620,
+  xxl: 1900
+};
+
 export const theme = createMuiTheme({
     palette: {
         primary: {
@@ -17,6 +26,9 @@ export const theme = createMuiTheme({
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 500
+    },
+    breakpoints: {
+      values: breakpointValues
     },
     spacing: 8,
     });

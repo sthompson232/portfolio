@@ -72,6 +72,7 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
         />
         <Bio 
             background={paletteActive ? color3 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            button={color2}
             color={textColor}
             color2={color1}
         />
