@@ -42,10 +42,10 @@ export class Typer extends React.Component {
 
   render() {
     return (
-      <h1 className="typer" style={{color: this.props.textColor}}>{ this.props.heading }&nbsp;
+      <span className="typer" style={{color: this.props.textColor}}>{ this.props.heading }&nbsp;
         <span>{ this.state.text }</span>
         <span style={{ borderLeft: `.1em solid ${this.props.textColor}` }} id="cursor"></span>
-      </h1>
+      </span>
     );
   }
 }

@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Loader } from './components/Loader'
 import { Landing } from './components/Landing'
 import { Content } from './components/Content'
 import "./components/ColorMaterial"
 import { 
-    Paper,
     ThemeProvider, 
     IconButton,
     AppBar,
@@ -22,7 +21,13 @@ const App = () => {
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
-    const startPalette = [8, 17, 30, 31, 38, 45, 50, 52, 62, 75, 83, 85, 89] 
+    const startPalette = [8, 17, 30, 31, 38, 45, 50, 52, 75, 83, 85, 89] 
+    const papap = [31, 30, 38, 75, 85, 89]
+
+    useEffect(() => {
+        console.log(paletteNumber)
+    })
+
 
     const [darkMode, setDarkMode] = useState(true)
     const [paletteActive, setPaletteActive] = useState(true)
@@ -30,7 +35,6 @@ const App = () => {
                                                         startPalette[Math.floor(Math.random() * startPalette.length)] : 
                                                         (darkMode ? 36 : 11)
                                                         )
-    let chosenOne = colors[paletteNumber][1]
 
     return (
         <ThemeProvider theme={theme}>
@@ -49,8 +53,8 @@ const App = () => {
                                         }} 
                                     >
                                     {!darkMode ? 
-                                    <Brightness2OutlinedIcon style={{ fontSize: 50, color: colors[paletteNumber][2] }} /> : 
-                                    <Brightness7Icon style={{ fontSize: 50, color: colors[paletteNumber][2] }} />
+                                    <Brightness2OutlinedIcon style={{ fontSize: 50, color: colors[paletteNumber][4] }} /> : 
+                                    <Brightness7Icon style={{ fontSize: 50, color: colors[paletteNumber][4] }} />
                                     }
                                     </IconButton>
                                     <IconButton
@@ -60,7 +64,7 @@ const App = () => {
                                             setPaletteActive(true)
                                         }}
                                     >
-                                        <PaletteIcon style={{ fontSize: 50, color: colors[paletteNumber][2] }} /> 
+                                        <PaletteIcon style={{ fontSize: 50, color: colors[paletteNumber][4] }} /> 
                                     </IconButton>
                                 </div>
                                 :
@@ -102,20 +106,12 @@ const App = () => {
                 darkMode={darkMode}
             />
             <Loader />
-            <Paper 
-                style={paletteActive ? {backgroundColor: chosenOne} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})}
-                square
-                className={darkMode ? 
-                classes.backgroundBlack :
-                classes.backgroundWhite
-            }>
-                <Content
-                    paletteNumber={paletteNumber}
-                    paletteActive={paletteActive}
-                    colors={colors}
-                    darkMode={darkMode}
-                />
-            </Paper>
+            <Content
+                paletteNumber={paletteNumber}
+                paletteActive={paletteActive}
+                colors={colors}
+                darkMode={darkMode}
+            />
         </ThemeProvider>
     )
 }

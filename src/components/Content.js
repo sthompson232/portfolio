@@ -1,57 +1,80 @@
 import { useEffect, useState } from 'react'
-import { useStyles } from '../styles'
-import { Typography, Grid } from '@material-ui/core'
 import { Typer } from './Typer'
-import { DjangoIcon } from './helpers/DjangoIcon'
-import { ReactIcon } from './helpers/ReactIcon'
-
+import { Section } from './Section'
+import { Icons } from './Icons'
+import { Bio } from './Bio'
 
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
-    const classes = useStyles();
 
     const [textColor, setTextColor] = useState('')
+    const [color1, setColor1] = useState('')
+    const [color2, setColor2] = useState('')
+    const [color3, setColor3] = useState('')
 
     useEffect(() => {
         setTextColor(paletteActive ? (colors[paletteNumber][4]) : (darkMode ? '#ffffff' : '#0E0E0E'))
+        setColor1(paletteActive ? (colors[paletteNumber][1]) : (darkMode ? '#0E0E0E' : '#ffffff'))
+        setColor2(paletteActive ? (colors[paletteNumber][2]) : (darkMode ? '#0E0E0E' : '#ffffff'))
+        setColor3(paletteActive ? (colors[paletteNumber][3]) : (darkMode ? '#0E0E0E' : '#ffffff'))
     }, [paletteActive, colors, paletteNumber, darkMode])
 
     return (
         <>
-        <Typer
-            heading="I love to use"
-            dataText={[  
-            'PostgreSQL.',
-            'three.js',
-            'react-fiber.',
-            'Redux.',
-            'GraphQL.',
-            'Celery.',
-            'Redis.',
-            'Git/Github.',
-            'Bootstrap.',
-            'Material-UI.',
-            'TailwindCSS.',
-            'Alpine.js.',
-            ]} 
-            paletteNumber={paletteNumber}
-            paletteActive={paletteActive}
-            colors={colors}
-            darkMode={darkMode}
-            textColor={textColor}
+
+        <Section 
+            background={paletteActive ? color1 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            color={textColor} 
+            content={
+                <Typer
+                    heading="I love to use"
+                    dataText={[  
+                    'three.js',
+                    'react-fiber.',
+                    'Redux.',
+                    'GraphQL.',
+                    'Celery.',
+                    'Redis.',
+                    'Git/Github.',
+                    'Docker.',
+                    'Bootstrap.',
+                    'Material-UI.',
+                    'TailwindCSS.',
+                    'Alpine.js.',
+                    'AJAX.',
+                    'jQuery.',
+                    'Adobe XD.',
+                    'Photoshop.',
+                    'Nginx.',
+                    'gunicorn.'
+                    ]} 
+                    paletteNumber={paletteNumber}
+                    paletteActive={paletteActive}
+                    colors={colors}
+                    darkMode={darkMode}
+                    textColor={textColor}
+                />
+            }
         />
-        <Typography 
-        variant="h1" 
-        className={classes.headingText}
-        style={{color:textColor}}>But you'll mostly find me using</Typography>
-        <Grid container>
-            <Grid item xs={6}>
-            <ReactIcon fill={textColor} />
-            </Grid>
-            <Grid item xs={6}>
-            <DjangoIcon fill={textColor} />
-            </Grid>
-        </Grid>
+        <Section 
+            background={paletteActive ? color2 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            color={textColor} 
+            content={'...in projects like these:'}
+        />
+        <Section 
+            background={paletteActive ? color1 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            color={textColor} 
+            content={'But you\'ll mostly find me using...'}
+        />
+        <Section 
+            background={paletteActive ? color2 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            content={<Icons color={textColor} />}
+        />
+        <Bio 
+            background={paletteActive ? color3 : (darkMode ? '#0E0E0E' : '#ffffff')} 
+            color={textColor}
+            color2={color1}
+        />
         </>
     )
 }

@@ -40,13 +40,22 @@ export const useStyles = makeStyles((theme) => ({
     },
     headingText: {
         [theme.breakpoints.down('sm')]: {
-            fontSize: '4rem'
+            fontSize: '3.5rem'
         },
-        [theme.breakpoints.only('md')]: {
-            fontSize: '5rem'
+        [theme.breakpoints.up('md')]: {
+            fontSize: '4rem'
         },
         fontWeight: 700,
         fontFamily: `'Poppins', sans-serif`,
         textAlign: 'center'
+    },
+    bioImage: {
+        width: '100%',
+        height: 'auto'
+    },
+    paraText: {
+        fontWeight: 600,
+        fontSize: '4rem',
+        fontFamily: `'Poppins', sans-serif`,
     }
 }));
