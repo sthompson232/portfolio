@@ -39,7 +39,10 @@ export const useStyles = makeStyles((theme) => ({
         pointerEvents: 'none'
     },
     headingText: {
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '2rem'
+        },
+        [theme.breakpoints.only('sm')]: {
             fontSize: '3.5rem'
         },
         [theme.breakpoints.up('md')]: {
@@ -78,5 +81,12 @@ export const useStyles = makeStyles((theme) => ({
         },
         fontWeight: 600,
         fontFamily: `'Poppins', sans-serif`,
-    }
+    },
+    button: {
+        textAlign: 'center',
+        padding: 60,
+    },
+    buttonIcon: {
+        fontSize: '7rem'
+    },
 }));

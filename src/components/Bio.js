@@ -1,7 +1,8 @@
 import React from 'react'
-import { Typography, Box, Grid, Card } from '@material-ui/core'
+import { Typography, Box, Grid, Container } from '@material-ui/core'
 import { useStyles } from '../styles'
 import bio from '../static/bio.jpeg'
+import { ContactButton } from './ContactButton'
 import EmailIcon from '@material-ui/icons/Email'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
@@ -12,7 +13,7 @@ export const Bio = ({ background, color, color2, button }) => {
     
     return (
         <Box style={{ backgroundColor: background, border: 'none' }}>
-            <Box pb={16}>
+            <Box py={8}>
                 <Grid 
                     container 
                     direction='row'
@@ -25,7 +26,7 @@ export const Bio = ({ background, color, color2, button }) => {
                                 className={classes.paraText}
                                 style={{ color: color }}
                                 >
-                                I am a self taught web designer and developer, currently working as a freelancer via <span style={{ color: color2 }}>yellowhousestudios. </span> 
+                                I am a self taught web designer and developer, currently working as a <span style={{ color: color2 }}>freelancer.</span> 
                                 <br />
                                 To find out more about me, you can read my CV <span style={{ color: color2 }}>here.</span>
                             </Typography>
@@ -37,7 +38,7 @@ export const Bio = ({ background, color, color2, button }) => {
                     </Grid>
                 </Grid>
             </Box>
-            <Box pb={16}>    
+            <Box pb={4}>    
                 <Grid container>
                     <Grid container item xs={12}>
                         <Box p={4}>
@@ -50,18 +51,25 @@ export const Bio = ({ background, color, color2, button }) => {
                             </Typography>
                         </Box>
                     </Grid>
-                    <Grid container justify='center' align='center' item md={4}>
-                        <Card style={{ backgroundColor: button }}>
-                            <GitHubIcon />
-                        </Card>
-                        
-                    </Grid>
-                    <Grid container justify='center' align='center' item md={4} style={{ backgroundColor: button }}>
-                        <LinkedInIcon />
-                    </Grid>
-                    <Grid container justify='center' align='center' item md={4} style={{ backgroundColor: button }}>
-                        <EmailIcon />
-                    </Grid>
+                    <Container maxWidth={false}>
+                        <Grid container spacing={4}>
+                            <ContactButton 
+                                icon={<GitHubIcon className={classes.buttonIcon} style={{ color: color }}/>} 
+                                button={button} 
+                                link={'https://github.com/sthompson232'}
+                            />
+                            <ContactButton 
+                                icon={<LinkedInIcon className={classes.buttonIcon} style={{ color: color }}/>} 
+                                button={button} 
+                                link={'https://www.linkedin.com/in/sam-thompson-b20964185/'}
+                            />
+                            <ContactButton 
+                                icon={<EmailIcon className={classes.buttonIcon} style={{ color: color }}/>} 
+                                button={button} 
+                                link={'mailto:samthompson292@gmail.com'}
+                            />
+                        </Grid>
+                    </Container>
                 </Grid>
             </Box>
         </Box>

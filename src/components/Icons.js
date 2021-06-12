@@ -7,19 +7,19 @@ import { Grid, Box } from '@material-ui/core'
 
 export const Icons = ( {color} ) => {
     return (
-    <Grid alignContent='space-between' container>
-        <Grid item xs={4}>
-            <Box p={8}>
+    <Grid alignContent='space-around' container>
+        <Grid item align='center' xs={12} sm={4}>
+            <Box className='icon'>
                 <PostgresIcon fill={color} />
             </Box>
         </Grid>
-        <Grid item xs={4}>
-            <Box p={8}>
+        <Grid item align='center' xs={12} sm={4}>
+            <Box className='icon'>
                 <DjangoIcon fill={color} />
             </Box>
         </Grid>
-        <Grid item xs={4}>
-            <Box p={8}>
+        <Grid item align='center' xs={12} sm={4}>
+            <Box className='icon'>
                 <ReactIcon fill={color} />
             </Box>
         </Grid>

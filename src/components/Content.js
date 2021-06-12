@@ -3,6 +3,12 @@ import { Typer } from './Typer'
 import { Section } from './Section'
 import { Icons } from './Icons'
 import { Bio } from './Bio'
+import { Box } from '@material-ui/core'
+import { Website } from './Website'
+import khalopsian from '../static/khal.png'
+import bookguild from '../static/bookguild.png'
+import conference from '../static/conference.png'
+import roth from '../static/roth.png'
 
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
@@ -59,16 +65,43 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
         <Section 
             background={paletteActive ? color2 : (darkMode ? '#0E0E0E' : '#ffffff')} 
             color={textColor} 
-            content={'...in projects like these:'}
+            content={'But you\'ll mostly find me using...'}
         />
+        <Box py={12} style={paletteActive ? {backgroundColor: color3} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})} >
+            <Icons color={textColor} />
+        </Box>
         <Section 
             background={paletteActive ? color1 : (darkMode ? '#0E0E0E' : '#ffffff')} 
             color={textColor} 
-            content={'But you\'ll mostly find me using...'}
+            content={'...in projects like these:'}
         />
-        <Section 
-            background={paletteActive ? color2 : (darkMode ? '#0E0E0E' : '#ffffff')} 
-            content={<Icons color={textColor} />}
+        <Website 
+            image={bookguild}
+            title='The Bookguild Publishing'
+            background={color2}
+            color={textColor}
+            link='https://www.bookguild.co.uk/'
+        />
+        <Website 
+            image={khalopsian}
+            title='Khalopsian'
+            background={color3}
+            color={textColor}
+            link='https://www.khalopsian.com/'
+        />
+        <Website 
+            image={conference}
+            title='The Self-Publishing Conference'
+            background={color1}
+            color={textColor}
+            link='https://www.selfpublishingconference.org.uk/'
+        />
+        <Website 
+            image={roth}
+            title='Lorna Roth'
+            background={color2}
+            color={textColor}
+            link='https://www.lornarothauthor.co.uk/'
         />
         <Bio 
             background={paletteActive ? color3 : (darkMode ? '#0E0E0E' : '#ffffff')} 

@@ -8,7 +8,7 @@ export const Section = ({background, color, content}) => {
 
     return (
         <Box
-            py={24}
+            py={20}
             style={{ backgroundColor: background, border: 'none' }}
         >
             <Typography
