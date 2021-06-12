@@ -67,7 +67,7 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             color={textColor} 
             content={'But you\'ll mostly find me using...'}
         />
-        <Box py={12} style={paletteActive ? {backgroundColor: color3} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})} >
+        <Box py={6} style={paletteActive ? {backgroundColor: color3} : (darkMode ? {backgroundColor: '#0E0E0E'} : {backgroundColor: '#ffffff'})} >
             <Icons color={textColor} />
         </Box>
         <Section 
