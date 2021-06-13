@@ -52,6 +52,20 @@ export const useStyles = makeStyles((theme) => ({
         fontFamily: `'Poppins', sans-serif`,
         textAlign: 'center'
     },
+    websiteText: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.5rem'
+        },
+        [theme.breakpoints.only('sm')]: {
+            fontSize: '2.5rem'
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: '4rem'
+        },
+        fontWeight: 700,
+        fontFamily: `'Poppins', sans-serif`,
+        textAlign: 'center' 
+    },
     bioImage: {
         width: '100%',
         height: 'auto',

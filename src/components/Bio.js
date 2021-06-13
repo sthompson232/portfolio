@@ -8,7 +8,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 
-export const Bio = ({ background, color, color2, button }) => {
+export const Bio = ({ background, color, color2, button, revColor, revButton }) => {
     const classes = useStyles();
     
     return (
@@ -54,18 +54,18 @@ export const Bio = ({ background, color, color2, button }) => {
                     <Container maxWidth={false}>
                         <Grid container spacing={4}>
                             <ContactButton 
-                                icon={<GitHubIcon className={classes.buttonIcon} style={{ color: color }}/>} 
-                                button={button} 
+                                icon={<GitHubIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                button={revButton} 
                                 link={'https://github.com/sthompson232'}
                             />
                             <ContactButton 
-                                icon={<LinkedInIcon className={classes.buttonIcon} style={{ color: color }}/>} 
-                                button={button} 
+                                icon={<LinkedInIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                button={revButton} 
                                 link={'https://www.linkedin.com/in/sam-thompson-b20964185/'}
                             />
                             <ContactButton 
-                                icon={<EmailIcon className={classes.buttonIcon} style={{ color: color }}/>} 
-                                button={button} 
+                                icon={<EmailIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                button={revButton} 
                                 link={'mailto:samthompson292@gmail.com'}
                             />
                         </Grid>

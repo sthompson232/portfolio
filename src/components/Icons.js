@@ -9,17 +9,17 @@ export const Icons = ( {color} ) => {
     return (
     <Grid alignContent='space-around' container>
         <Grid item align='center' xs={12} sm={4}>
-            <Box className='icon' py={5}>
+            <Box className='icon' p={3}>
                 <PostgresIcon fill={color} />
             </Box>
         </Grid>
         <Grid item align='center' xs={12} sm={4}>
-            <Box className='icon' py={5}>
+            <Box className='icon' p={3}>
                 <DjangoIcon fill={color} />
             </Box>
         </Grid>
         <Grid item align='center' xs={12} sm={4}>
-            <Box className='icon' py={5}>
+            <Box className='icon' p={3}>
                 <ReactIcon fill={color} />
             </Box>
         </Grid>

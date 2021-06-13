@@ -9,7 +9,7 @@ export const ContactButton = ({ icon, button, link }) => {
     return (
         <Grid item xs={12} md={4}>
             <Link href={link} target="_blank">
-                <Paper className={classes.button} style={{ backgroundColor: button }}>
+                <Paper className={`${classes.button} hover`} style={{ backgroundColor: button }}>
                     {icon}
                 </Paper>
             </Link>

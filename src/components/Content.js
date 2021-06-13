@@ -18,11 +18,16 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
     const [color2, setColor2] = useState('')
     const [color3, setColor3] = useState('')
 
+    const [revTextColor, setRevTextColor] = useState('')
+    const [revColor2, setRevColor2] = useState('')
+
     useEffect(() => {
         setTextColor(paletteActive ? (colors[paletteNumber][4]) : (darkMode ? '#ffffff' : '#0E0E0E'))
         setColor1(paletteActive ? (colors[paletteNumber][1]) : (darkMode ? '#0E0E0E' : '#ffffff'))
         setColor2(paletteActive ? (colors[paletteNumber][2]) : (darkMode ? '#0E0E0E' : '#ffffff'))
         setColor3(paletteActive ? (colors[paletteNumber][3]) : (darkMode ? '#0E0E0E' : '#ffffff'))
+        setRevTextColor(paletteActive ? (colors[paletteNumber][4]) : (darkMode ? '#0E0E0E' : '#ffffff'))
+        setRevColor2(paletteActive ? (colors[paletteNumber][2]) : (darkMode ? '#ffffff' : '#0E0E0E'))
     }, [paletteActive, colors, paletteNumber, darkMode])
 
     return (
@@ -108,6 +113,8 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             button={color2}
             color={textColor}
             color2={color1}
+            revButton={revColor2}
+            revColor={revTextColor}
         />
         </>
     )

@@ -58,7 +58,6 @@ const App = () => {
                                     }
                                     </IconButton>
                                     <IconButton
-                                        style={{ marginRight: '20px'}}
                                         onClick={() => { 
                                             setPaletteNumber(Math.floor(Math.random() * 100))
                                             setPaletteActive(true)

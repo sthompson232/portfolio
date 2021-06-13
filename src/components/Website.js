@@ -12,7 +12,7 @@ export const Website = ({ image, title, background, color, link }) => {
             <Link href={link} target="_blank" className='overlay' style={{ backgroundColor: background }}>
                 <Typography 
                     variant="h1" 
-                    className={`${classes.headingText} text`}
+                    className={`${classes.websiteText} text`}
                     style={{ color: color }}
                 >
                     {title}
