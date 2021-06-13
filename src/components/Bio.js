@@ -1,14 +1,15 @@
 import React from 'react'
-import { Typography, Box, Grid, Container } from '@material-ui/core'
+import { Typography, Box, Grid, Container, Link } from '@material-ui/core'
 import { useStyles } from '../styles'
 import bio from '../static/bio.jpeg'
 import { ContactButton } from './ContactButton'
 import EmailIcon from '@material-ui/icons/Email'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
+import cv from '../static/cv.pdf'
 
 
-export const Bio = ({ background, color, color2, button, revColor, revButton }) => {
+export const Bio = ({ background, color, color2, revColor, revButton }) => {
     const classes = useStyles();
     
     return (
@@ -26,9 +27,10 @@ export const Bio = ({ background, color, color2, button, revColor, revButton }) 
                                 className={classes.paraText}
                                 style={{ color: color }}
                                 >
-                                I am a self taught web designer and developer, currently working as a <span style={{ color: color2 }}>freelancer.</span> 
+                                I am a self taught web developer, currently working as a <span style={{ color: color2 }}>freelancer,</span> primarily using Django and React. 
                                 <br />
-                                To find out more about me, you can read my CV <span style={{ color: color2 }}>here.</span>
+                                <br />
+                                To find out more about me, you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
                             </Typography>
                         </Box>
 

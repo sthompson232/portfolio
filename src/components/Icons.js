@@ -6,6 +6,7 @@ import { Grid, Box } from '@material-ui/core'
 
 
 export const Icons = ( {color} ) => {
+
     return (
     <Grid alignContent='space-around' container>
         <Grid item align='center' xs={12} sm={4}>
