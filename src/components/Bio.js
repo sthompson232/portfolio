@@ -11,7 +11,7 @@ import cv from '../static/cv.pdf'
 
 export const Bio = ({ background, color, color2, revColor, revButton }) => {
     const classes = useStyles();
-    
+      
     return (
         <Box style={{ backgroundColor: background, border: 'none' }}>
             <Box py={8}>

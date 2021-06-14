@@ -23,7 +23,6 @@ export const Section = ({background, color, content}) => {
                 start: 'top bottom-=200',
                 end: 'bottom top',
                 toggleActions: 'play none none reverse',
-                markers: true
             }
         })
 
