@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from 'react'
-import { Typography, Box, Grid, Container, Link } from '@material-ui/core'
+import { Typography, Box, Grid, Container } from '@material-ui/core'
 import { useStyles } from '../styles'
 import bio from '../static/bio.jpeg'
 import { ContactButton } from './ContactButton'
+import { Description } from './Description'
 import EmailIcon from '@material-ui/icons/Email'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
-import cv from '../static/cv.pdf'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -58,21 +58,10 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
                     direction='row'
                     alignItems='center' 
                 >
-                    <Grid item sm={12} lg={7} xl={8} xxl={10}>
-                        <Box p={4}>
-                            <Typography
-                                variant="h1" 
-                                className={classes.paraText}
-                                style={{ color: color }}
-                                >
-                                I am a self taught web developer, currently working as a <span style={{ color: color2 }}>freelancer,</span> primarily using Django and React. 
-                                <br />
-                                <br />
-                                To find out more about me, you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
-                            </Typography>
-                        </Box>
-
-                    </Grid>
+                    <Description 
+                        color={color}
+                        color2={color2}
+                    />
                     <Grid container item justify='center' sm={12} lg={5} xl={4} xxl={2}>
                         <img style={{ overflow: 'hidden' }} ref={imageRef} className={classes.bioImage} src={bio} alt="Sam Thompson"/>
                     </Grid>
