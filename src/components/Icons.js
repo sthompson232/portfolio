@@ -36,7 +36,7 @@ export const Icons = ( {color} ) => {
             duration: 1.5, 
             autoAlpha: 1,
             ease: 'bounce',
-            delay: 0.5,
+            delay: 0.3,
             scrollTrigger: {
                 trigger: djangoRef.current,
                 start: 'top bottom-=15%',
@@ -48,7 +48,7 @@ export const Icons = ( {color} ) => {
             duration: 1.5, 
             autoAlpha: 1,
             ease: 'bounce',
-            delay: 1,
+            delay: 0.6,
             scrollTrigger: {
                 trigger: reactRef.current,
                 start: 'top bottom-=15%',
