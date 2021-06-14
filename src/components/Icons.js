@@ -27,7 +27,7 @@ export const Icons = ( {color} ) => {
             ease: 'bounce',
             scrollTrigger: {
                 trigger: postgresRef.current,
-                start: 'top bottom-=200',
+                start: 'top bottom-=15%',
                 toggleActions: 'play none none reverse',
             }
         })

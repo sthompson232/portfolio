@@ -10,59 +10,41 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const Description = ({ color, color2 }) => {
     const classes = useStyles();
+    const bioRef = useRef(null)
+
+    useEffect(() => {
+        gsap.fromTo(bioRef.current, {
+            x: -100,
+            autoAlpha: 0
+        }, {
+            autoAlpha: 1,
+            duration: 2,
+            x: 0,
+            scrollTrigger: {
+                trigger: bioRef.current,
+                start: 'top 75%',
+                toggleActions: 'play none none reverse',
+            }
+        })
+    }, [bioRef])
 
     return (
         <Grid item sm={12} lg={7} xl={8} xxl={10}>
-        <Box p={4}>
-        {/* <Typography
-            variant="h1" 
-            className={classes.paraText}
-            style={{ color: color }}
-            >
-            I am a self taught web developer, currently working as a <span style={{ color: color2 }}>freelancer,</span> primarily using Django and React. 
-            <br />
-            <br />
-            To find out more about me, you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
-        </Typography> */}
-            <Typography
-                variant="h1" 
-                className={classes.paraText}
-                style={{ color: color }}
-                >
-                I am a self taught web developer,
-            </Typography>
-            <Typography
-                variant="h1" 
-                className={classes.paraText}
-                style={{ color: color }}
-                >
-                currently working as a <span style={{ color: color2 }}>freelancer,</span>
-            </Typography>
-            <Typography
-                variant="h1" 
-                className={classes.paraText}
-                style={{ color: color }}
-                >
-                primarily using Django and React. 
-            </Typography>
-            <br /> 
-            <br />
-            <Typography
-                variant="h1" 
-                className={classes.paraText}
-                style={{ color: color }}
-                >
-                To find out more about me,
-            </Typography>
-            <Typography
-                variant="h1" 
-                className={classes.paraText}
-                style={{ color: color }}
-                >
-                you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
-            </Typography>
-        </Box>
-    </Grid>
+            <Box p={4}>
+                <div ref={bioRef}>
+                    <Typography
+                        variant="h1" 
+                        className={classes.paraText}
+                        style={{ color: color }}
+                        >
+                        I am a self taught web developer, currently working as a <span style={{ color: color2 }}>freelancer,</span> primarily using  <span style={{ color: color2 }}>Django</span> and  <span style={{ color: color2 }}>React.</span> 
+                        <br />
+                        <br />
+                        To find out more about me, you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
+                    </Typography>
+                </div>
+            </Box>
+        </Grid>
     )
 }
 

@@ -124,4 +124,7 @@ header {
 
 .hover:hover {
   filter: brightness(85%);
+  transform: translateY(-10px);
+  transition: transform 2s;
 }
+

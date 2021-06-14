@@ -20,7 +20,7 @@ export const Section = ({background, color, content}) => {
             ease: 'none',
             scrollTrigger: {
                 trigger: textRef.current,
-                start: 'top bottom-=200',
+                start: 'top bottom-=15%',
                 end: 'bottom top',
                 toggleActions: 'play none none reverse',
             }

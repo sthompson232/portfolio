@@ -29,6 +29,7 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
             scrollTrigger: {
                 trigger: titleRef.current,
                 start: 'top bottom',
+                end: '-=15%',
                 toggleActions: 'play none none reverse',
             }
         })
@@ -43,8 +44,9 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
             autoAlpha: 1,
             duration: 2,
             scrollTrigger: {
-                trigger: titleRef.current,
+                trigger: imageRef.current,
                 start: 'top bottom',
+                end: '-=15%',
                 toggleActions: 'play none none reverse',
             }
         })
@@ -85,17 +87,17 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
                     <Container maxWidth={false}>
                         <Grid container spacing={4}>
                             <ContactButton 
-                                icon={<GitHubIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                icon={<GitHubIcon className={classes.buttonIcon} style={{ color: revColor, fontSize: '7rem' }}/>} 
                                 button={revButton} 
                                 link={'https://github.com/sthompson232'}
                             />
                             <ContactButton 
-                                icon={<LinkedInIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                icon={<LinkedInIcon className={classes.buttonIcon} style={{ color: revColor, fontSize: '7rem' }}/>} 
                                 button={revButton} 
                                 link={'https://www.linkedin.com/in/sam-thompson-b20964185/'}
                             />
                             <ContactButton 
-                                icon={<EmailIcon className={classes.buttonIcon} style={{ color: revColor }}/>} 
+                                icon={<EmailIcon className={classes.buttonIcon} style={{ color: revColor, fontSize: '7rem' }}/>} 
                                 button={revButton} 
                                 link={'mailto:samthompson292@gmail.com'}
                             />
