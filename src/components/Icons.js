@@ -39,7 +39,7 @@ export const Icons = ( {color} ) => {
             delay: 0.5,
             scrollTrigger: {
                 trigger: djangoRef.current,
-                start: 'top bottom-=200',
+                start: 'top bottom-=15%',
                 toggleActions: 'play none none reverse',
             }
         })
@@ -51,7 +51,7 @@ export const Icons = ( {color} ) => {
             delay: 1,
             scrollTrigger: {
                 trigger: reactRef.current,
-                start: 'top bottom-=200',
+                start: 'top bottom-=15%',
                 toggleActions: 'play none none reverse',
             }
         })

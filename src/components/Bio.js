@@ -65,7 +65,7 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
                         color2={color2}
                     />
                     <Grid container item justify='center' sm={12} lg={5} xl={4} xxl={2}>
-                        <img style={{ overflow: 'hidden' }} ref={imageRef} className={classes.bioImage} src={bio} alt="Sam Thompson"/>
+                        <img style={{ overflow: 'hidden', alignItems: 'flex-start' }} ref={imageRef} className={classes.bioImage} src={bio} alt="Sam Thompson"/>
                     </Grid>
                 </Grid>
             </Box>
