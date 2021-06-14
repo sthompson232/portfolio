@@ -2,9 +2,9 @@ import React from 'react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.scss'
-import { render } from 'react-snapshot';
+import ReactDOM from 'react-dom';
 
-render(
+ReactDOM.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,
