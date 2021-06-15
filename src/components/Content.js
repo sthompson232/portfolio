@@ -123,6 +123,7 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             color2={color1}
             revButton={revColor2}
             revColor={revTextColor}
+            paletteActive={paletteActive}
         />
         </>
     )

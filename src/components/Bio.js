@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 
-export const Bio = ({ background, color, color2, revColor, revButton }) => {
+export const Bio = ({ background, color, color2, revColor, revButton, paletteActive }) => {
     const classes = useStyles();
     const titleRef = useRef(null)
     const imageRef = useRef(null)
@@ -63,6 +63,7 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
                     <Description 
                         color={color}
                         color2={color2}
+                        paletteActive={paletteActive}
                     />
                     <Grid container item justify='center' alignItems='flex-start' sm={12} lg={5} xl={4} xxl={2} style={{ overflow: 'hidden' }}>
                         <img style={{ overflow: 'hidden', alignItems: 'flex-start' }} ref={imageRef} className={classes.bioImage} src={bio} alt="Sam Thompson"/>
@@ -77,7 +78,7 @@ export const Bio = ({ background, color, color2, revColor, revButton }) => {
                                 <Typography
                                     variant="h1" 
                                     className={classes.headingText}
-                                    style={{ color: color2 }}
+                                    style={paletteActive ? {color: color2} : {color: color}}
                                     >
                                     Connect with me
                                 </Typography>

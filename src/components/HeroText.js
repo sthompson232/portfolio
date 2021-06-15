@@ -14,7 +14,7 @@ export const HeroText = ({ paletteNumber, paletteActive, colors, darkMode }) => 
         zIndexRange={[1, 0]}
         style={{
             position: 'absolute',
-            'pointer-events': 'none',
+            pointerEvents: 'none',
             top: -size.height / 5,
             left: -size.width / 2.4,
             width: size.width / 2,
