@@ -3,15 +3,22 @@ import { Typer } from './Typer'
 import { Section } from './Section'
 import { Icons } from './Icons'
 import { Bio } from './Bio'
-import { Box } from '@material-ui/core'
+import { Box, useMediaQuery } from '@material-ui/core'
 import { Website } from './Website'
+
 import khalopsian from '../static/khal.png'
 import bookguild from '../static/bookguild.png'
 import conference from '../static/conference.png'
 import roth from '../static/roth.png'
 
+import khalopsianmob from '../static/khalmob.png'
+import bookguildmob from '../static/bookguildmob.png'
+import conferencemob from '../static/conferencemob.png'
+import rothmob from '../static/rothmob.png'
+
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
+    const breakpoint = useMediaQuery('(min-width:600px)');
 
     const [textColor, setTextColor] = useState('')
     const [color1, setColor1] = useState('')
@@ -82,28 +89,28 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             content={'...in projects like these:'}
         />
         <Website 
-            image={bookguild}
+            image={breakpoint ? bookguild : bookguildmob}
             title='The Bookguild Publishing'
             background={color2}
             color={textColor}
             link='https://www.bookguild.co.uk/'
         />
         <Website 
-            image={khalopsian}
+            image={breakpoint ? khalopsian : khalopsianmob}
             title='Khalopsian'
             background={color3}
             color={textColor}
             link='https://www.khalopsian.com/'
         />
         <Website 
-            image={conference}
+            image={breakpoint ? conference : conferencemob}
             title='The Self-Publishing Conference'
             background={color1}
             color={textColor}
             link='https://www.selfpublishingconference.org.uk/'
         />
         <Website 
-            image={roth}
+            image={breakpoint ? roth : rothmob}
             title='Lorna Roth'
             background={color2}
             color={textColor}
