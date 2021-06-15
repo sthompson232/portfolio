@@ -11,11 +11,16 @@ $font: 'Poppins', sans-serif;
 
 html,
 body,
+.loader,
 #root {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.loader {
+  background-color: #0E0E0E;
 }
 
 body {

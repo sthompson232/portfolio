@@ -1,12 +1,25 @@
-import React from 'react';
-import App from './App';
+import React, { Suspense } from 'react';
 import reportWebVitals from './reportWebVitals';
 import './index.scss'
 import ReactDOM from 'react-dom';
+import { Grid } from '@material-ui/core'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
+const App = React.lazy(() => import ('./App'))
 
 ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <Suspense fallback={
+      <div className='loader'>
+        <Grid container className='loader' alignItems='center' justify='center'>
+          <Grid item>
+            <CircularProgress size={100} style={{ color: '#ffffff' }}/>
+          </Grid>
+        </Grid>
+      </div>
+      }>
+        <App />
+      </Suspense>
     </React.StrictMode>,
   document.getElementById('root')
 );

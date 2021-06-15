@@ -16,18 +16,15 @@ import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
 
-
 const App = () => {
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
-    const startPalette = [8, 17, 30, 31, 38, 45, 50, 52, 75, 83, 85, 89] 
-    // const papap = [31, 30, 38, 75, 85, 83, 89]
+    const startPalette = [31, 30, 38, 75, 85, 83, 89] 
 
     useEffect(() => {
-        console.log(paletteNumber)
+        // console.log(paletteNumber)
     })
-
 
     const [darkMode, setDarkMode] = useState(true)
     const [paletteActive, setPaletteActive] = useState(true)
