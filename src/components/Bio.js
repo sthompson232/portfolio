@@ -100,7 +100,7 @@ export const Bio = ({ background, color, color2, revColor, revButton, paletteAct
                             <ContactButton 
                                 icon={<EmailIcon className={classes.buttonIcon} style={{ color: revColor, fontSize: '7rem' }}/>} 
                                 button={revButton} 
-                                link={'mailto:samthompson292@gmail.com'}
+                                link={'mailto:sam@samthompson.io'}
                             />
                         </Grid>
                     </Container>
