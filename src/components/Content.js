@@ -10,11 +10,13 @@ import khalopsian from '../static/khal.png'
 import bookguild from '../static/bookguild.png'
 import conference from '../static/conference.png'
 import roth from '../static/roth.png'
+import yeonmi from '../static/yeonmi.png'
 
 import khalopsianmob from '../static/khalmob.png'
 import bookguildmob from '../static/bookguildmob.png'
 import conferencemob from '../static/conferencemob.png'
 import rothmob from '../static/rothmob.png'
+import yeonmimob from '../static/yeonmimob.png'
 
 
 export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
@@ -87,6 +89,13 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             background={paletteActive ? color1 : (darkMode ? '#0E0E0E' : '#ffffff')} 
             color={textColor} 
             content={'...in projects like these:'}
+        />
+        <Website 
+            image={breakpoint ? yeonmi : yeonmimob}
+            title='Yeonmi Park'
+            background={color2}
+            color={textColor}
+            link='https://www.yeonmi-park.com/'
         />
         <Website 
             image={breakpoint ? bookguild : bookguildmob}
