@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Loader } from './components/Loader'
 import { Landing } from './components/Landing'
 import { Content } from './components/Content'
@@ -15,14 +15,8 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
-import ReactGA from 'react-ga';
 
 const App = () => {
-
-    useEffect(() => {
-        ReactGA.initialize('G-EW6V9K4745');
-        ReactGA.pageview('/')
-    }, [])
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
