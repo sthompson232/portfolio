@@ -93,7 +93,7 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
         <Website 
             image={breakpoint ? yeonmi : yeonmimob}
             title='Yeonmi Park'
-            background={color2}
+            background={color3}
             color={textColor}
             link='https://www.yeonmi-park.com/'
         />
