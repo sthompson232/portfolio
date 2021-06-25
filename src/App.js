@@ -17,11 +17,12 @@ import { theme } from './theme'
 import { useStyles } from './styles'
 import ReactGA from 'react-ga'
 
+ReactGA.initialize('G-7PS9Y8WS07')
 
 const App = () => {
 
     useEffect(() => {
-        ReactGA.initialize('G-7PS9Y8WS07')
+        ReactGA.pageview(window.location.pathname + window.location.search); 
     }, [])
 
     const colors = require('nice-color-palettes');
