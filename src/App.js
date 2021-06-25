@@ -18,16 +18,15 @@ import { useStyles } from './styles'
 import ReactGA from 'react-ga';
 
 const App = () => {
-    ReactGA.initialize('G-EW6V9K4745');
+
+    useEffect(() => {
+        ReactGA.initialize('G-EW6V9K4745');
+        ReactGA.pageview('/')
+    }, [])
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
     const startPalette = [31, 30, 38, 75, 85, 83, 89] 
-
-    useEffect(() => {
-        // console.log(paletteNumber)
-    })
-
     const [darkMode, setDarkMode] = useState(true)
     const [paletteActive, setPaletteActive] = useState(true)
     const [paletteNumber, setPaletteNumber] = useState(paletteActive ? 
