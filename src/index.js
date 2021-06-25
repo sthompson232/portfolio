@@ -17,14 +17,14 @@ const injectGA = () => {
   }
   gtag('js', new Date());
 
-  gtag('config', 'G-EW6V9K4745');
+  gtag('config', 'G-7PS9Y8WS07');
 };
 
 ReactDOM.render(
     <React.StrictMode>
       <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-EW6V9K4745"
+      src="https://www.googletagmanager.com/gtag/js?id=G-7PS9Y8WS07"
     />
     <script>{injectGA()}</script>
       <Suspense fallback={
