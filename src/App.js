@@ -15,8 +15,10 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
+import ReactGA from 'react-ga';
 
 const App = () => {
+    ReactGA.initialize('G-EW6V9K4745');
 
     const colors = require('nice-color-palettes');
     const classes = useStyles();
