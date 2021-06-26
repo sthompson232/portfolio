@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Loader } from './components/Loader'
 import { Landing } from './components/Landing'
 import { Content } from './components/Content'
@@ -15,16 +15,8 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
-import ReactGA from 'react-ga'
-
-ReactGA.initialize('G-7PS9Y8WS07')
 
 const App = () => {
-
-    useEffect(() => {
-        ReactGA.pageview(window.location.pathname + window.location.search); 
-    }, [])
-
     const colors = require('nice-color-palettes');
     const classes = useStyles();
     const startPalette = [31, 30, 38, 75, 85, 83, 89] 

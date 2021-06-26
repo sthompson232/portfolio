@@ -22,11 +22,6 @@ const injectGA = () => {
 
 ReactDOM.render(
     <React.StrictMode>
-      <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-7PS9Y8WS07"
-    />
-    <script>{injectGA()}</script>
       <Suspense fallback={
       <div className='loader'>
         <Grid container className='loader' alignItems='center' justify='center'>
@@ -36,6 +31,11 @@ ReactDOM.render(
         </Grid>
       </div>
       }>
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-7PS9Y8WS07"
+      />
+      <script>{injectGA()}</script>
         <App />
       </Suspense>
     </React.StrictMode>,
