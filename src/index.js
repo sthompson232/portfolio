@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import reportWebVitals from './reportWebVitals';
 import './index.scss'
 import ReactDOM from 'react-dom';
 import { Grid } from '@material-ui/core'
@@ -20,6 +19,7 @@ const injectGA = () => {
   gtag('config', 'G-7PS9Y8WS07');
 };
 
+const rootElement = document.getElementById("root");
 ReactDOM.render(
     <React.StrictMode>
       <Suspense fallback={
@@ -39,7 +39,5 @@ ReactDOM.render(
         <App />
       </Suspense>
     </React.StrictMode>,
-  document.getElementById('root')
+  rootElement
 );
-
-reportWebVitals();
