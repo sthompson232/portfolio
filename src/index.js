@@ -6,18 +6,18 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 const App = React.lazy(() => import ('./App'))
 
-// const injectGA = () => {
-//   if (typeof window == 'undefined') {
-//     return;
-//   }
-//   window.dataLayer = window.dataLayer || [];
-//   function gtag() {
-//     window.dataLayer.push(arguments);
-//   }
-//   gtag('js', new Date());
+const injectGA = () => {
+  if (typeof window == 'undefined') {
+    return;
+  }
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
 
-//   gtag('config', 'G-7PS9Y8WS07');
-// };
+  gtag('config', 'G-7PS9Y8WS07');
+};
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
@@ -31,11 +31,11 @@ ReactDOM.render(
         </Grid>
       </div>
       }>
-      {/* <script
+      <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-7PS9Y8WS07"
       />
-      <script>{injectGA()}</script> */}
+      <script>{injectGA()}</script>
         <App />
       </Suspense>
     </React.StrictMode>,

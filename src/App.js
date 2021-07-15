@@ -15,10 +15,6 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PaletteIcon from '@material-ui/icons/Palette';
 import { theme } from './theme'
 import { useStyles } from './styles'
-import ReactGA from 'react-ga';
-
-const TRACKING_ID = "G-7PS9Y8WS07"; // YOUR_OWN_TRACKING_ID
-ReactGA.initialize(TRACKING_ID);
 
 const App = () => {
     const colors = require('nice-color-palettes');
