@@ -1,10 +1,9 @@
 export const DjangoIcon = ({ fill }) => {
     return (
-        <div>
             <svg 
                 version="1.0" 
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 550.000000 550.000000"
+                viewBox="0 0 1550.000000 1550.000000"
                 preserveAspectRatio="xMidYMid meet">
             <g 
                 transform="translate(0.000000,550.000000) scale(0.100000,-0.100000)"
@@ -43,6 +42,5 @@ export const DjangoIcon = ({ fill }) => {
                 -3 139 -1 169 2 l56 7 0 430 0 429 -27 12 c-51 20 -241 20 -309 0z"/>
             </g>
             </svg>  
-        </div>
     )
 }

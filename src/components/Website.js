@@ -18,7 +18,6 @@ export const Website = ({ image, title, background, color, link }) => {
                     {title}
                 </Typography>
             </Link>
-
         </Grid>
     )
 }
