@@ -8,14 +8,14 @@ import { Website } from './Website'
 import khalopsian from '../static/khal.png'
 import bookguild from '../static/bookguild.png'
 import conference from '../static/conference.png'
-import roth from '../static/roth.png'
+import evince from '../static/evince.png'
 import yeonmi from '../static/yeonmi.png'
 import budgetcog from '../static/budgetcog.png'
 
 import khalopsianmob from '../static/khalmob.png'
 import bookguildmob from '../static/bookguildmob.png'
 import conferencemob from '../static/conferencemob.png'
-import rothmob from '../static/rothmob.png'
+import evincemob from '../static/evincemob.png'
 import yeonmimob from '../static/yeonmimob.png'
 import budgetcogmob from '../static/budgetcogmob.png'
 
@@ -96,18 +96,11 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             link='https://www.bookguild.co.uk/'
         />
         <Website 
-            image={breakpoint ? budgetcog : budgetcogmob}
-            title="BudgetCog"
-            background={color1}
-            color={textColor}
-            link='https://www.budgetcog.com/'
-        />
-        <Website 
-            image={breakpoint ? yeonmi : yeonmimob}
-            title='Yeonmi Park'
+            image={breakpoint ? evince : evincemob}
+            title='Evince London'
             background={color2}
             color={textColor}
-            link='https://www.yeonmi-park.com/'
+            link='https://www.evincelondon.com/'
         />
         <Website 
             image={breakpoint ? khalopsian : khalopsianmob}
@@ -124,11 +117,11 @@ export const Content = ({ paletteNumber, paletteActive, colors, darkMode }) => {
             link='https://www.selfpublishingconference.org.uk/'
         />
         <Website 
-            image={breakpoint ? roth : rothmob}
-            title='Lorna Roth'
+            image={breakpoint ? yeonmi : yeonmimob}
+            title='Yeonmi Park'
             background={color2}
             color={textColor}
-            link='https://www.lornarothauthor.co.uk/'
+            link='https://www.yeonmi-park.com/'
         />
         <Bio 
             background={paletteActive ? color3 : (darkMode ? '#0E0E0E' : '#ffffff')} 

@@ -37,7 +37,7 @@ export const Description = ({ color, color2, paletteActive }) => {
                         className={classes.paraText}
                         style={{ color: color }}
                         >
-                        I am a self taught web developer, currently working as a <span style={paletteActive ? {color: color2} : {color: color}}>freelancer,</span> primarily using  <span style={paletteActive ? {color: color2} : {color: color}}>Django</span> and  <span style={paletteActive ? {color: color2} : {color: color}}>React.</span> 
+                        I am a self taught <span style={paletteActive ? {color: color2} : {color: color}}>software developer,</span> primarily using  <span style={paletteActive ? {color: color2} : {color: color}}>Django</span> and  <span style={paletteActive ? {color: color2} : {color: color}}>React.</span> 
                         <br />
                         <br />
                         To find out more about me, you can read my CV <Link target="_blank" href={cv} style={{ color: color2, textDecoration: 'none' }}>here.</Link>
