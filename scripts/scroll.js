@@ -4,33 +4,35 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 export default class CustomScroll {
-	lenis;
-
 	constructor(scrollContainer) {
 		if (!isTouchDevice()) {
-			this.lenis = new Lenis({
-				direction: 'horizontal',
+			const lenis = new Lenis({
+				easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
 				orientation: 'horizontal',
-				gestureOrientation: 'horizontal',
-
-				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-
 				content: scrollContainer,
-				wrapper: scrollContainer
+				wrapper: scrollContainer,
+				virtualScroll: () => false,
 			});
-
+	
+			function raf(time) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+			requestAnimationFrame(raf);
+	
 			window.addEventListener('wheel', (e) => {
 				scrollContainer.scrollLeft += e.deltaY;
 			});
+	
+			lenis.on('scroll', (e) => {
+				console.log(e);
+			});
 
-			requestAnimationFrame(this.raf);
-
-
+			gsap.ticker.add((time) => {
+				lenis.raf(time * 1000);
+			});
+			
+			gsap.ticker.lagSmoothing(0);
 		}
-	}
-
-	raf = (time) => {
-		this.lenis.raf(time);
-		requestAnimationFrame(this.raf.bind(this));
 	}
 }
