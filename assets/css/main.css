@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LAYOUT */
+  .page-wrapper {
+    @apply relative z-10 bg-primary
+  }
+  .page-container {
+		@apply layout-container pt-32 sm:pt-40 pb-6 sm:pb-12
+	}
+	.layout-container {
+    @apply relative mx-auto px-6 md:px-8 lg:px-16 py-6 sm:py-12
+  }
+  /* TYPOGRAPHY */
+	.navbar-title {
+		@apply text-neutral-200 font-extrabold uppercase text-clamp-2xl hover:text-accent transition-all cursor-pointer
+	}
+  .desktop-navitem {
+    @apply text-neutral-200 uppercase text-clamp-xl hover:text-accent cursor-pointer
+  }
+  .sidebar-navitem {
+    @apply text-primary hover:text-accent italic font-serif text-clamp-5xl cursor-pointer
+  }
+  .footer-text {
+    @apply text-neutral-200 uppercase font-medium
+  }
+  .heading-base {
+    @apply text-neutral-200 uppercase font-serif font-extrabold
+  }
+  .h1 {
+    @apply heading-base text-clamp-6xl
+  }
+  .h2 {
+    @apply heading-base text-clamp-5xl
+  }
+  .h3 {
+    @apply heading-base text-clamp-4xl
+  }
+  .h4 {
+    @apply heading-base text-clamp-3xl
+  }
+  .h5 {
+    @apply heading-base text-clamp-2xl
+  }
+  .h6 {
+    @apply heading-base text-clamp-xl
+  }
+  .sub-heading {
+    @apply uppercase tracking-wider font-semibold text-accent
+  }
+  .body-base {
+    @apply prose max-w-3xl text-neutral-200 prose-headings:text-neutral-200 prose-strong:text-neutral-200 prose-a:text-accent prose-headings:font-serif prose-headings:uppercase
+  }
+  .small-body {
+    @apply body-base text-clamp-base
+  }
+  .body {
+    @apply body-base text-clamp-lg
+  }
+  .large-body {
+    @apply body-base text-clamp-xl
+  }
+  .caption {
+    @apply small-body italic text-neutral-200
+  }
+  .text-input {
+    @apply shadow-sm block w-full border border-neutral-200 rounded-md p-3 caret-accent focus:outline-accent my-2
+  }
+  .form-label {
+    @apply body-base
+  }
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-tr from-accent to-teal-200
+  }
+  .action-link {
+		@apply underline text-accent hover:brightness-90 transition-all cursor-pointer
+	}
+}
+
+@layer components {  
+  .btn {
+    @apply bg-accent hover:brightness-90 disabled:hover:bg-accent disabled:hover:cursor-not-allowed text-white inline-flex items-center justify-center rounded px-4 sm:px-6 py-2 uppercase font-semibold min-w-[180px] transition-all cursor-pointer
+  }
+  .card {
+    @apply w-full border border-gray-100 p-4 lg:p-6 mb-3 lg:mb-4 shadow rounded-2xl bg-white
+  }
+  .underline-hover {
+    @apply block ml-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-accent
+  }
+  .underline-hover-large {
+    @apply block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-1 bg-accent
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    @apply opacity-0 translate-y-[50px]
+  }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: theme(colors.black);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme(colors.gray.200);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme(colors.primary);
+}
+
+.lil-gui { 
+	z-index: 5000 !important;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
