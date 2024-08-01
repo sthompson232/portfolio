@@ -1,29 +1,26 @@
 import glsl from 'vite-plugin-glsl';
 
-const TITLE = 'Netlio';
-const URL = 'netlio-vue.netlify.app';
-const DESCRIPTION = 'This is the description';
+const TITLE = 'Sam Thompson';
+const URL = 'samthompson.com';
+const DESCRIPTION = 'Sam Thompson is a creative developer from the East Midlands. Currently working with Netlio to create stunning websites.';
 const THEME = '#ff0000';
 
-const SITE_CODE = 'netlio';
+const SITE_CODE = 'portfolio';
 const API_URL = 'https://api.netl.io'
 
 const PAGES = [
   { name: 'Home', href: '/' },
-  { name: 'Three', href: '/three' },
-  { name: 'OGL', href: '/ogl' },
-  { name: 'Images', href: '/images' },
 ];
 
-const FACEBOOK = '#';
-const INSTAGRAM = '#'
-const TWITTER = '#';
-const LINKEDIN = '#';
-const YOUTUBE = '#';
-const TIKTOK='#';
-const THREADS='#';
-const PINTEREST='#';
-const WEBSITE='#';
+const FACEBOOK = '';
+const INSTAGRAM = ''
+const TWITTER = '';
+const LINKEDIN = '';
+const YOUTUBE = '';
+const TIKTOK='';
+const THREADS='';
+const PINTEREST='';
+const WEBSITE='';
 
 export default defineNuxtConfig({
   app: {
@@ -48,9 +45,7 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/icons/apple-touch-icon.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' },
+        { rel: 'stylesheet', href: 'https://use.typekit.net/dmy0erq.css' },
       ],
     },
   },

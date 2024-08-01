@@ -5,8 +5,8 @@ import FontFaceObserver from 'fontfaceobserver';
 
 const loadingState = reactive({
   loadedPages: [],
-  fonts: ['Inter'],
-  webglAssets: ['/images/dev/1.jpg', '/images/dev/2.jpg', '/images/dev/3.jpg', '/images/dev/4.jpg', '/images/dev/5.jpg', '/images/dev/6.jpg', '/images/dev/7.jpg', '/images/dev/8.jpg', '/images/dev/9.jpg'],
+  fonts: ['freight-big-pro'],
+  webglAssets: ['images/dev/1.jpg'],
   fontProgress: 0,
   imageProgress: 0,
   webglProgress: 0,

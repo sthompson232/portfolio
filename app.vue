@@ -6,11 +6,11 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const { resetLoader } = useLoaderComposable();
+  const { resetLoader, loadPage } = useLoaderComposable();
   const route = useRoute();
   
   useHead({
-    titleTemplate: title => title ? `${title} | Netlio` : 'Netlio',
+    titleTemplate: 'Sam Thompson',
     bodyAttrs: {
       class: "antialiased selection:bg-accent selection:text-secondary",
     },
@@ -65,6 +65,8 @@
   };
 
   onMounted(() => {
+    loadPage('app');
+
     // Get width of content
     contentWidth.value = innerContent.value.scrollWidth;
 
@@ -118,17 +120,10 @@
     <LayoutPageTransition />
     <main ref="scrollContainer" class="overflow-hidden">
       <div ref="innerContent" class="fixed inset-0 flex flex-row flex-nowrap will-change-transform" style="transform: translate3d(0, 0, 0);">
-        <div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-red-500">
-    			<h1 class="h1">Section 1</h1>
-    		</div>
-    		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-green-500">
-    			<h1 class="h1">Section 2</h1>
-    		</div>
-    		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-blue-500">
-    			<h1 class="h1">Section 3</h1>
-    		</div>
+        <HomePage />
+        <ProjectsPage />
+        <ContactPage />
       </div>
-      <NuxtPage />
     </main>
     <LayoutCookieConsent />
   </div>
