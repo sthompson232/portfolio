@@ -11,7 +11,6 @@ export default class CustomScroll {
 				orientation: 'horizontal',
 				content: scrollContainer,
 				wrapper: scrollContainer,
-				virtualScroll: () => false,
 			});
 	
 			function raf(time) {
@@ -19,10 +18,6 @@ export default class CustomScroll {
 				requestAnimationFrame(raf);
 			}
 			requestAnimationFrame(raf);
-	
-			window.addEventListener('wheel', (e) => {
-				scrollContainer.scrollLeft += e.deltaY;
-			});
 	
 			lenis.on('scroll', (e) => {
 				console.log(e);

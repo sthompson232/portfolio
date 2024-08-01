@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  // Scripts
-  import Lenis from 'lenis';
-  import CustomScroll from '@/scripts/scroll';
+  // Utils
+  import { lerp } from '@/scripts/utils';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -17,84 +16,46 @@
     },
   });
 
-  const lenis = ref(null);
+  const targetScrollX = ref(0);
+  const currentScrollX = ref(0);
   const scrollContainer = ref(null);
-  const isDown = ref(false);
-  const prevX = ref(0);
-  const currentX = ref(0);
-  const startX = ref(0);
-  const scrollLeft = ref(0);
+  const innerContent = ref(null);
+  const clonedInnerContent = ref(null);
 
-  const handleMouseDown = (e) => {
-    isDown.value = true;
-    prevX.value = e.clientX;
-    scrollLeft.value = scrollContainer.value.scrollLeft;
-    if (scrollContainer.value) {
-      scrollContainer.value.classList.add('active', 'cursor-grabbing');
-    }
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDown.value) return;
-    e.preventDefault();
-    
-    if (scrollContainer.value) {
-      currentX.value = e.clientX;
-      const walk = (currentX.value - prevX.value) * 100; // Difference between current position and start position
-
-      prevX.value = currentX.value;
-    }
-  };
-
-  const handleMouseLeave = () => {
-    isDown.value = false;
-    if (scrollContainer.value) {
-      scrollContainer.value.classList.remove('active', 'cursor-grabbing');
-    }
-  };
-  const handleMouseUp = () => {
-    isDown.value = false;
-    if (scrollContainer.value) {
-      scrollContainer.value.classList.remove('active', 'cursor-grabbing');
-    }
-  };
+  const screenWidth = ref(0);
+  const contentWidth = ref(0);
 
   onMounted(() => {
-    lenis.value = new Lenis({
-			easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-			orientation: 'horizontal',
-			content: scrollContainer.value,
-			wrapper: scrollContainer.value,
-		});
+    // Get width of content
+    contentWidth.value = innerContent.value.scrollWidth;
 
-		function raf(time) {
-			lenis.value.raf(time);
-      if (!isDown.value) return;
-      
-      if (scrollContainer.value) {
-        const walk = (currentX.value - prevX.value) * 100; // Difference between current position and start position
-        console.log(walk);
-        lenis.value.scrollTo(lenis.value.targetScroll - walk);
+    // Create cloned content
+    clonedInnerContent.value = innerContent.value.cloneNode(true);
+    scrollContainer.value.appendChild(clonedInnerContent.value);
 
-        prevX.value = currentX.value;
-      }
+    function tick() {
+      currentScrollX.value = lerp(currentScrollX.value, targetScrollX.value, 0.1);
 
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
+      const scrollOffset = ((currentScrollX.value % contentWidth.value) + contentWidth.value) % contentWidth.value;
 
-		gsap.ticker.add((time) => {
-			lenis.value.raf(time * 1000);
-		});
-		
-		gsap.ticker.lagSmoothing(0);
+      const innerContentTranslateX = scrollOffset;
+      const clonedInnerContentTranslateX = scrollOffset - contentWidth.value;
 
-    if (scrollContainer.value) {
-      scrollContainer.value.addEventListener('mousedown', handleMouseDown);
-      scrollContainer.value.addEventListener('mouseleave', handleMouseLeave);
-      scrollContainer.value.addEventListener('mouseup', handleMouseUp);
-      scrollContainer.value.addEventListener('mousemove', handleMouseMove);
+      innerContent.value.style.transform = `translate3d(${innerContentTranslateX}px, 0, 0)`;
+      clonedInnerContent.value.style.transform = `translate3d(${clonedInnerContentTranslateX}px, 0, 0)`;
+
+      requestAnimationFrame(tick);
     }
+    tick();
+
+    window.addEventListener('wheel', (e) => {
+      targetScrollX.value -= e.deltaY;
+    });
+
+    window.addEventListener('resize', () => {
+      screenWidth.value = innerContent.value.offsetWidth;
+      contentWidth.value = innerContent.value.scrollWidth;
+    });
   });
 
   watch(() => route.name, () => {
@@ -106,16 +67,18 @@
   <div>
     <LayoutInitialLoadTransition />
     <LayoutPageTransition />
-    <main ref="scrollContainer" class="overflow-x-hidden flex">
-      <div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-red-500">
-  			<h1 class="h1">Section 1</h1>
-  		</div>
-  		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-green-500">
-  			<h1 class="h1">Section 2</h1>
-  		</div>
-  		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-blue-500">
-  			<h1 class="h1">Section 3</h1>
-  		</div>
+    <main ref="scrollContainer" class="overflow-hidden">
+      <div ref="innerContent" class="fixed inset-0 flex flex-row flex-nowrap will-change-transform" style="transform: translate3d(0, 0, 0);">
+        <div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-red-500">
+    			<h1 class="h1">Section 1</h1>
+    		</div>
+    		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-green-500">
+    			<h1 class="h1">Section 2</h1>
+    		</div>
+    		<div class="min-w-[100vw] min-h-screen flex justify-center items-center bg-blue-500">
+    			<h1 class="h1">Section 3</h1>
+    		</div>
+      </div>
       <NuxtPage />
     </main>
     <LayoutCookieConsent />
