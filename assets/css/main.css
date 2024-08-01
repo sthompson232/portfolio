@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Humane';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url('assets/fonts/Humane.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Murmure';
+  font-weight: 400;
+  font-style: normal;
+  src: url('assets/fonts/Murmure.ttf') format('truetype');
+}
+
 @layer base {
   /* LAYOUT */
   .page-wrapper {
@@ -27,25 +41,25 @@
     @apply text-neutral-200 uppercase font-medium
   }
   .heading-base {
-    @apply text-neutral-200 uppercase font-serif font-extrabold
+    @apply text-neutral-200 pointer-events-none font-serif
   }
   .h1 {
-    @apply heading-base text-clamp-6xl
+    @apply heading-base text-clamp-9xl
   }
   .h2 {
-    @apply heading-base text-clamp-5xl
+    @apply heading-base text-clamp-8xl
   }
   .h3 {
-    @apply heading-base text-clamp-4xl
+    @apply heading-base text-clamp-7xl
   }
   .h4 {
-    @apply heading-base text-clamp-3xl
+    @apply heading-base text-clamp-6xl
   }
   .h5 {
-    @apply heading-base text-clamp-2xl
+    @apply heading-base text-clamp-5xl
   }
   .h6 {
-    @apply heading-base text-clamp-xl
+    @apply heading-base text-clamp-4xl
   }
   .sub-heading {
     @apply uppercase tracking-wider font-semibold text-accent

@@ -18,7 +18,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: [
-          'Inter',
+          'Humane',
 					'Poppins',
 					'Roboto',
 					'ui-sans-serif',
@@ -37,7 +37,7 @@ module.exports = {
 					'"Noto Color Emoji"',
 				],
 				serif: [
-          'Inter',
+          'Murmure',
           'Merriweather',
           'ui-serif',
           'Georgia',

@@ -18,12 +18,51 @@
 
   const targetScrollX = ref(0);
   const currentScrollX = ref(0);
+
   const scrollContainer = ref(null);
   const innerContent = ref(null);
   const clonedInnerContent = ref(null);
 
   const screenWidth = ref(0);
   const contentWidth = ref(0);
+
+  const isDown = ref(false);
+  const prevX = ref(0);
+  const currentX = ref(0);
+
+  const handleMouseDown = (e) => {
+    isDown.value = true;
+    prevX.value = e.pageX;
+    if (scrollContainer.value) {
+      scrollContainer.value.classList.add('active', 'cursor-grabbing');
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown.value) return;
+    e.preventDefault();
+    
+    if (scrollContainer.value) {
+      currentX.value = e.pageX;
+      const walk = (currentX.value - prevX.value) * 3;
+      targetScrollX.value += walk;
+
+      prevX.value = currentX.value;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    isDown.value = false;
+    if (scrollContainer.value) {
+      scrollContainer.value.classList.remove('active', 'cursor-grabbing');
+    }
+  };
+  const handleMouseUp = () => {
+    isDown.value = false;
+    if (scrollContainer.value) {
+      scrollContainer.value.classList.remove('active', 'cursor-grabbing');
+    }
+  };
 
   onMounted(() => {
     // Get width of content
@@ -34,10 +73,13 @@
     scrollContainer.value.appendChild(clonedInnerContent.value);
 
     function tick() {
+      // Lerp current scroll
       currentScrollX.value = lerp(currentScrollX.value, targetScrollX.value, 0.1);
 
+      // Get offset of the content element from when translate X is 0. Must work when scroll value is both positive and negative
       const scrollOffset = ((currentScrollX.value % contentWidth.value) + contentWidth.value) % contentWidth.value;
 
+      // Use scroll offset to set translation values for content
       const innerContentTranslateX = scrollOffset;
       const clonedInnerContentTranslateX = scrollOffset - contentWidth.value;
 
@@ -53,14 +95,21 @@
     });
 
     window.addEventListener('resize', () => {
+      currentScrollX.value = 0;
+      targetScrollX.value = 0;
       screenWidth.value = innerContent.value.offsetWidth;
       contentWidth.value = innerContent.value.scrollWidth;
     });
+
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousemove', handleMouseMove);
   });
 
   watch(() => route.name, () => {
     resetLoader(route.name);
-  })
+  });
 </script>
 
 <template>
