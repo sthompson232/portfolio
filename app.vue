@@ -126,6 +126,9 @@
         <CareerPage />
         <AboutPage />
         <ProjectsPage />
+        <Showcase1Page />
+        <Showcase2Page />
+        <Showcase3Page />
         <ContactPage />
       </div>
     </main>

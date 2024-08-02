@@ -70,7 +70,7 @@ module.exports = {
       fontSize: {
         'micro': [`clamp(0.7rem, 1vh, 5rem)`, { lineHeight: '1' }],
         'body': [`clamp(1rem, 2vh, 8rem)`, { lineHeight: '1.2' }],
-        'heading': [`clamp(8rem, 28vh, 80rem)`, { lineHeight: '0.8' }],
+        'heading': [`clamp(8rem, 25vh, 80rem)`, { lineHeight: '0.8' }],
       },
       maxWidth: {
         '8xl': '92rem',
@@ -82,6 +82,11 @@ module.exports = {
 				'lg': '1024px',
 				'xl': '1280px',
 				'2xl': '1536px',
+				// HEIGHT BREAKPOINTS
+				'hsm': { 'raw': '(min-height: 670px)' },
+				'hmd': { 'raw': '(min-height: 840px)' },
+				'hlg': { 'raw': '(min-height: 960px)' },
+				'hxl': { 'raw': '(min-height: 1200px)' },
 			},
       width: {
         '1/1': '100%',

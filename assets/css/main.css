@@ -23,7 +23,7 @@
     @apply text-black pointer-events-none select-none text-balance max-w-3xl font-display font-medium text-heading
   }
   .body {
-    @apply max-w-2xl pointer-events-none select-none text-body text-black text-balance
+    @apply max-w-sm hsm:max-w-lg hmd:max-w-xl pointer-events-none select-none text-body text-black text-balance
   }
   .micro {
     @apply max-w-2xl text-black text-micro font-medium font-micro uppercase pointer-events-none select-none mb-2
