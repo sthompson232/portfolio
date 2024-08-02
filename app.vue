@@ -123,6 +123,7 @@
       <LayoutSidebar />
       <div ref="innerContent" class="fixed inset-0 flex flex-row flex-nowrap will-change-transform" style="transform: translate3d(0, 0, 0);">
         <HomePage />
+        <CareerPage />
         <AboutPage />
         <ProjectsPage />
         <ContactPage />

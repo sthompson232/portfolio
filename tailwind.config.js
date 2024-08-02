@@ -69,7 +69,7 @@ module.exports = {
 			},
       fontSize: {
         'micro': [`clamp(0.7rem, 1vh, 5rem)`, { lineHeight: '1' }],
-        'body': [`clamp(1rem, 2.5vh, 6rem)`, { lineHeight: '1' }],
+        'body': [`clamp(1rem, 2vh, 8rem)`, { lineHeight: '1.2' }],
         'heading': [`clamp(8rem, 28vh, 80rem)`, { lineHeight: '0.8' }],
       },
       maxWidth: {

@@ -1,31 +1,50 @@
 <template>
 	<div class="page-container">
 		<div class="inner-page-container">
-			<div class="relative w-full h-full row-start-1 row-span-3 col-start-3 col-span-2 place-self-end">
-				<div class="absolute inset-0 flex justify-end">
-					<figure class="flex flex-col">
-						<img src="/images/index.jpg" alt="" class="pointer-events-none select-none object-contain object-right" />
-						<figcaption class="micro mt-3">The best man &#183; June 15<sup>th</sup>, 2024</figcaption>
-					</figure>
-				</div>
+			<div class="relative w-full h-full row-start-1 row-span-2 col-start-3 col-span-2 place-self-end">
+			  <figure class="flex flex-col items-center h-full">
+			    <div class="relative flex-grow overflow-hidden">
+			      <img src="/gif/guitar.gif" alt="Playing a gig at Camden Assembly" class="object-cover w-full h-full" />
+			    </div>
+			    <figcaption class="micro mt-2">Camden Assembly &#183; Some time in 2018</figcaption>
+			  </figure>
 			</div>
-			<div class="w-full h-full row-start-1 row-span-3 col-start-1 col-span-2 flex items-center justify-center">
+			<div class="relative w-full h-full row-start-3 row-span-2 col-start-3 col-span-2 place-self-end">
+			  <figure class="flex flex-col items-end h-full">
+			    <div class="relative flex-grow overflow-hidden">
+						<img src="/images/france.png" alt="Hiking up Mont Thabor" class="pointer-events-none select-none object-cover w-full h-full" />
+					</div>
+					<figcaption class="micro text-center mt-2">Mont Thabor, France &#183; August 3<sup>rd</sup> 2023</figcaption>
+				</figure>
+			</div>
+			<div class="relative w-full h-full row-start-5 row-span-2 col-start-3 col-span-2 place-self-end">
+			  <figure class="flex flex-col items-start h-full">
+			    <div class="relative flex-grow overflow-hidden">
+						<img src="/images/trumpet.jpg" alt="My cat; Trumpet" class="pointer-events-none select-none object-cover w-full h-full" />
+					</div>
+					<figcaption class="micro mt-2">My cat, Trumpet &#183; 2022</figcaption>
+				</figure>
+			</div>
+			<div class="w-full h-full row-start-1 row-span-3 col-start-1 col-span-2 flex items-center justify-start">
 				<div>
-					<p class="body mb-6">
-						I began teaching myself to code in 2020, initially starting with Python and Django. 
+					<small class="micro">Rockstar in the making</small>
+					<p class="body mb-[1.5vh]">
+						I have been playing guitar and piano since I was 8 years old. If I could only take one item with me to a desert island, it would be my Fender Stratocaster&#8482;.
 					</p>
-					<p class="body mb-6">
-						After working on various freelance projects, I finally landed my first full time position at Incling, primarily working with Django & React.
+					<small class="micro">Vive la France!</small>
+					<p class="body mb-[1.5vh]">
+						After living in France for a year, I have developed a love for the language and culture. I still visit often, and am studying for the DELF B2 French exam.
 					</p>
-					<p class="body mb-6">
-						In early 2023, I decided to take the leap back to a freelancer, operating under the <a href="https://netl.io" target="_blank" rel="noreferrer">Netlio</a> brand.
+					<small class="micro">Animal lover</small>
+					<p class="body mb-[1.5vh]">
+						Growing up I always had animals around me, which is why they have always been an important part of my life. Don't ask if I am a cat or a dog person, as I don't pick sides!
 					</p>
 				</div>
 			</div>
 			<div class="row-start-4 row-span-3 col-start-1 col-span-2 flex flex-col justify-end">
 				<div>
-					<small class="micro">Creative Developer</small>
-					<h1 class="heading-base">Who am I?</h1>
+					<small class="micro">When I'm not at my desk</small>
+					<h1 class="heading-base">But who am I?</h1>
 				</div>
 			</div>
 		</div>

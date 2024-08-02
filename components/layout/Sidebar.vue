@@ -38,7 +38,7 @@
 			</svg>
 		</div>
 		<div class="flex rotate-180" style="writing-mode: vertical-rl;">
-			<ul class="flex space-y-6 micro">
+			<ul class="flex space-y-4 micro">
 				<li class="self-center">Home</li>
 				<li class="self-center">About</li>
 				<li class="self-center">Projects</li>
