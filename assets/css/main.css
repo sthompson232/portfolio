@@ -27,17 +27,17 @@
 @layer base {
   /* LAYOUT */
   .page-container {
-		@apply relative min-w-[100vw] min-h-screen flex justify-center items-center p-4 sm:p-6 border-r border-neutral-300
+		@apply relative min-w-[100vw] min-h-screen flex justify-center items-center px-20 py-4 border-r border-neutral-300
 	}
   /* TYPOGRAPHY */
   .heading-base {
-    @apply text-black pointer-events-none select-none text-balance max-w-3xl font-serif leading-none font-medium
+    @apply text-black pointer-events-none select-none text-balance text-[12vh] leading-[9vh] max-w-3xl font-serif font-medium mb-8
   }
   .body {
-    @apply prose max-w-3xl prose-headings:text-neutral-200 prose-strong:text-neutral-200 prose-a:text-accent prose-headings:font-serif prose-p:mt-0 prose-headings:uppercase pointer-events-none select-none text-clamp-3xl text-black
+    @apply prose max-w-3xl prose-headings:text-neutral-200 prose-strong:text-neutral-200 prose-a:text-accent prose-headings:font-serif prose-p:mt-0 prose-headings:uppercase pointer-events-none select-none prose-p:text-[3.5vh] prose-p:leading-9 text-black
   }
   .micro {
-    @apply text-black text-lg font-semibold font-micro pointer-events-none select-none
+    @apply text-black text-[2vh] font-medium font-micro pointer-events-none select-none
   }
   .text-input {
     @apply shadow-sm block w-full border border-neutral-200 rounded-md p-3 caret-accent focus:outline-accent my-2
