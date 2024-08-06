@@ -6,6 +6,8 @@ const appState = reactive({
   contentWidth: 0,
   screenWidth: 0,
   isDragging: false,
+  innerContentTranslateX: 0,
+  clonedInnerContentTranslateX: 0,
 });
 
 export const useAppComposable = () => {
@@ -29,6 +31,14 @@ export const useAppComposable = () => {
     appState.isDragging = value;
   }
 
+  const setInnerContentTranslateX = (value) => {
+    appState.innerContentTranslateX = value;
+  }
+
+  const setClonedInnerContentTranslateX = (value) => {
+    appState.clonedInnerContentTranslateX = value;
+  }
+
   return {
     appState,
     setTargetScrollX,
@@ -36,5 +46,7 @@ export const useAppComposable = () => {
     setContentWidth,
     setScreenWidth,
     setIsDragging,
+    setInnerContentTranslateX,
+    setClonedInnerContentTranslateX,
   };
 };

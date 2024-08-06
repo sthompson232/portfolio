@@ -6,7 +6,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const { appState, setCurrentScrollX, setTargetScrollX, setContentWidth, setScreenWidth, setIsDragging } = useAppComposable();
+  const { appState, setCurrentScrollX, setTargetScrollX, setContentWidth, setScreenWidth, setIsDragging, setInnerContentTranslateX, setClonedInnerContentTranslateX } = useAppComposable();
   const { resetLoader, loadPage } = useLoaderComposable();
   const route = useRoute();
   
@@ -79,12 +79,8 @@
     loadPage('app');
 
     // Get width of content
-    setContentWidth(innerContent.value.scrollWidth);
+    setContentWidth(innerContent.value.$refs.outerDiv.scrollWidth);
     setScreenWidth(window.innerWidth);
-
-    // Create cloned content
-    clonedInnerContent.value = innerContent.value.cloneNode(true);
-    scrollContainer.value.appendChild(clonedInnerContent.value);
 
     function tick() {
       // Lerp current scroll
@@ -94,11 +90,8 @@
       const scrollOffset = ((appState.currentScrollX % appState.contentWidth) + appState.contentWidth) % appState.contentWidth;
 
       // Use scroll offset to set translation values for content
-      const innerContentTranslateX = scrollOffset;
-      const clonedInnerContentTranslateX = scrollOffset - appState.contentWidth;
-
-      innerContent.value.style.transform = `translate3d(${innerContentTranslateX}px, 0, 0)`;
-      clonedInnerContent.value.style.transform = `translate3d(${clonedInnerContentTranslateX}px, 0, 0)`;
+      setInnerContentTranslateX(scrollOffset);
+      setClonedInnerContentTranslateX(scrollOffset - appState.contentWidth);
 
       requestAnimationFrame(tick);
     }
@@ -111,7 +104,7 @@
     window.addEventListener('resize', () => {
       setCurrentScrollX(0);
       setTargetScrollX(0);
-      setContentWidth(innerContent.value.scrollWidth);
+      setContentWidth(innerContent.value.$refs.outerDiv.scrollWidth);
       setScreenWidth(window.innerWidth);
     });
 
@@ -137,16 +130,8 @@
         @navItemMouseEnter="navItemHovered = true"
         @navItemMouseLeave="navItemHovered = false"
       />
-      <div ref="innerContent" class="fixed inset-0 flex flex-row flex-nowrap will-change-transform" style="transform: translate3d(0, 0, 0);">
-        <HomePage />
-        <CareerPage />
-        <AboutPage />
-        <ProjectsPage />
-        <Showcase1Page />
-        <Showcase2Page />
-        <Showcase3Page />
-        <ContactPage />
-      </div>
+      <InnerContent ref="innerContent" :transform="appState.innerContentTranslateX" />
+      <InnerContent ref="clonedInnerContent" :transform="appState.clonedInnerContentTranslateX" />
     </main>
     <LayoutCookieConsent />
   </div>
