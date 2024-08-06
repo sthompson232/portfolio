@@ -52,8 +52,8 @@
 		<div class="flex rotate-180" style="writing-mode: vertical-rl;">
 			<ul class="flex space-y-4">
 				<li @click="navigate('home-page')" class="self-center nav-item">Home</li>
-				<li @click="navigate('about-page')" class="self-center nav-item">About</li>
 				<li @click="navigate('projects-page')" class="self-center nav-item">Projects</li>
+				<li @click="navigate('about-page')" class="self-center nav-item">About</li>
 				<li @click="navigate('contact-page')" class="self-center nav-item">Contact</li>
 			</ul>
 		</div>

@@ -6,7 +6,7 @@
 			    <div class="relative flex-grow overflow-hidden">
 			      <img src="/gif/guitar.gif" alt="Playing a gig at Camden Assembly" class="pointer-events-none select-none object-cover w-full h-full" />
 			    </div>
-			    <figcaption class="micro mt-2">Camden Assembly &#183; Some time in 2018</figcaption>
+			    <figcaption class="micro mt-2">Camden Assembly, London &#183; 2018</figcaption>
 			  </figure>
 			</div>
 			<div class="relative w-full h-full row-start-3 row-span-2 col-start-3 col-span-2 place-self-end">
@@ -14,7 +14,7 @@
 			    <div class="relative flex-grow overflow-hidden">
 						<img src="/images/france.png" alt="Hiking up Mont Thabor" class="pointer-events-none select-none object-cover w-full h-full" />
 					</div>
-					<figcaption class="micro text-center mt-2">Mont Thabor, France &#183; August 3<sup>rd</sup> 2023</figcaption>
+					<figcaption class="micro text-center mt-2">Mont Thabor, France &#183; 2023</figcaption>
 				</figure>
 			</div>
 			<div class="relative w-full h-full row-start-5 row-span-2 col-start-3 col-span-2 place-self-end">
@@ -33,7 +33,7 @@
 					</p>
 					<small class="micro">Vive la France!</small>
 					<p class="body mb-[1.5vh]">
-						After living in France for a year, I have developed a love for the language and culture. I still visit often, and am studying for the DELF B2 French exam.
+						After living in France for a year, I developed a love for the language and culture. I still visit every year, and am studying for the DELF B2 French exam.
 					</p>
 					<small class="micro">Animal lover</small>
 					<p class="body mb-[1.5vh]">

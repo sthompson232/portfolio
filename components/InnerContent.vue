@@ -12,12 +12,11 @@
     :style="`transform: translate3d(${props.transform}px, 0, 0);`"
   >
     <PagesHomePage />
-    <PagesCareerPage />
-    <PagesAboutPage />
     <PagesProjectsPage />
     <PagesShowcase1Page />
     <PagesShowcase2Page />
     <PagesShowcase3Page />
+    <PagesAboutPage />
     <PagesContactPage />
   </div>
 </template>

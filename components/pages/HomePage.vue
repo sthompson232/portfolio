@@ -12,7 +12,7 @@
 			<div class="w-full h-full row-start-1 row-span-3 col-start-1 col-span-2 flex items-center">
 				<div>
 					<p class="body">
-						I’m Sam, a creative developer with a passion for design. I help companies and agencies realise their true online potential.
+						I’m Sam, a creative developer with a passion for creating memorable web experiences. I support companies and individuals with creative development.
 					</p>
 				</div>
 			</div>

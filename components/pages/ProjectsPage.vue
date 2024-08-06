@@ -38,12 +38,11 @@
 			</div>
 			<div class="w-full h-full row-start-1 row-span-3 col-start-1 col-span-2 flex items-center justify-start">
 				<div>
-					<small class="micro">2021 - 2024</small>
 					<p class="body mb-[1.5vh]">
-						Explore a selection of projects that I have worked on as a freelancer, with some of my favourite clients.
+						I have designed and developed websites and applications for over 150 (happy) clients. Let's take a look at some of my favourite projects that I have worked on.
 					</p>
-					<p class="body mb">
-						But before we do that, let me indulge myself a little, by sharing a few testimonials with you from some previous clients I have worked with...
+					<p class="body">
+						But before we do that, let me show off a little, by sharing a few testimonials from some of my previous clients.
 					</p>
 				</div>
 			</div>
