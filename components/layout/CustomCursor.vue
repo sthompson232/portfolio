@@ -9,7 +9,9 @@
 	// Utils
 	import { lerp, getMousePos, isTouchDevice } from '@/scripts/utils';
 
-	const props = defineProps(['navItemHovered', 'isDragging']);
+	const { appState } = useAppComposable();
+
+	const props = defineProps(['navItemHovered']);
 
 	const iconContainer = ref(null);
 	const arrow = ref(null);
@@ -132,17 +134,17 @@
     }
 	});
 
-	watch(() => [props.navItemHovered, props.isDragging], () => {
+	watch(() => [props.navItemHovered, appState.isDragging], () => {
 		if (props.navItemHovered) {
 			activeMouseTimeline.value.play();
-			if (!props.isDragging) {
+			if (!appState.isDragging) {
 				hoverTimeline.value.play();
 			}
 		}
 		if (!props.navItemHovered) {
 			hoverTimeline.value.reverse();
 		}
-		if (!props.navItemHovered && !props.isDragging) {
+		if (!props.navItemHovered && !appState.isDragging) {
 			activeMouseTimeline.value.reverse();
 		}
 	});

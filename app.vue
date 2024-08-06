@@ -6,6 +6,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
+  const { appState, setCurrentScrollX, setTargetScrollX, setContentWidth, setScreenWidth, setIsDragging } = useAppComposable();
   const { resetLoader, loadPage } = useLoaderComposable();
   const route = useRoute();
   
@@ -16,17 +17,11 @@
     },
   });
 
-  const targetScrollX = ref(0);
-  const currentScrollX = ref(0);
-
   const scrollContainer = ref(null);
   const innerContent = ref(null);
   const clonedInnerContent = ref(null);
 
-  const contentWidth = ref(0);
-
   const isDown = ref(false);
-  const isDragging = ref(false);
   const prevX = ref(0);
   const currentX = ref(0);
 
@@ -37,12 +32,12 @@
     const targetPageOffset1 = targetPage[0].getBoundingClientRect().left;
     const targetPageOffset2 = targetPage[1].getBoundingClientRect().left;
     let closestTargetOffset = targetPageOffset1;
-    const distance1 = Math.abs(currentScrollX.value - targetPageOffset1);
-    const distance2 = Math.abs(currentScrollX.value - targetPageOffset2);
+    const distance1 = Math.abs(appState.currentScrollX - targetPageOffset1);
+    const distance2 = Math.abs(appState.currentScrollX - targetPageOffset2);
     if (distance1 > distance2) {
       closestTargetOffset = targetPageOffset2;
     }
-    targetScrollX.value -= closestTargetOffset;
+    setTargetScrollX(appState.targetScrollX - closestTargetOffset);
   }
 
   const handleMouseDown = (e) => {
@@ -56,10 +51,10 @@
     e.preventDefault();
     
     if (scrollContainer.value) {
-      isDragging.value = true;
+      setIsDragging(true);
       currentX.value = e.pageX;
       const walk = (currentX.value - prevX.value) * 3;
-      targetScrollX.value += walk;
+      setTargetScrollX(appState.targetScrollX += walk);
 
       prevX.value = currentX.value;
     }
@@ -67,14 +62,14 @@
 
   const handleMouseLeave = () => {
     isDown.value = false;
-    isDragging.value = false;
+    setIsDragging(false);
     if (scrollContainer.value) {
       scrollContainer.value.classList.remove('active', 'cursor-grabbing');
     }
   };
   const handleMouseUp = () => {
     isDown.value = false;
-    isDragging.value = false;
+    setIsDragging(false);
     if (scrollContainer.value) {
       scrollContainer.value.classList.remove('active', 'cursor-grabbing');
     }
@@ -84,7 +79,8 @@
     loadPage('app');
 
     // Get width of content
-    contentWidth.value = innerContent.value.scrollWidth;
+    setContentWidth(innerContent.value.scrollWidth);
+    setScreenWidth(window.innerWidth);
 
     // Create cloned content
     clonedInnerContent.value = innerContent.value.cloneNode(true);
@@ -92,14 +88,14 @@
 
     function tick() {
       // Lerp current scroll
-      currentScrollX.value = lerp(currentScrollX.value, targetScrollX.value, 0.1);
+      setCurrentScrollX(lerp(appState.currentScrollX, appState.targetScrollX, 0.1));
 
       // Get offset of the content element from when translate X is 0. Must work when scroll value is both positive and negative
-      const scrollOffset = ((currentScrollX.value % contentWidth.value) + contentWidth.value) % contentWidth.value;
+      const scrollOffset = ((appState.currentScrollX % appState.contentWidth) + appState.contentWidth) % appState.contentWidth;
 
       // Use scroll offset to set translation values for content
       const innerContentTranslateX = scrollOffset;
-      const clonedInnerContentTranslateX = scrollOffset - contentWidth.value;
+      const clonedInnerContentTranslateX = scrollOffset - appState.contentWidth;
 
       innerContent.value.style.transform = `translate3d(${innerContentTranslateX}px, 0, 0)`;
       clonedInnerContent.value.style.transform = `translate3d(${clonedInnerContentTranslateX}px, 0, 0)`;
@@ -109,13 +105,14 @@
     tick();
 
     window.addEventListener('wheel', (e) => {
-      targetScrollX.value -= e.deltaY;
+      setTargetScrollX(appState.targetScrollX - e.deltaY);
     });
 
     window.addEventListener('resize', () => {
-      currentScrollX.value = 0;
-      targetScrollX.value = 0;
-      contentWidth.value = innerContent.value.scrollWidth;
+      setCurrentScrollX(0);
+      setTargetScrollX(0);
+      setContentWidth(innerContent.value.scrollWidth);
+      setScreenWidth(window.innerWidth);
     });
 
     window.addEventListener('mousedown', handleMouseDown);
@@ -133,10 +130,7 @@
   <div>
     <LayoutInitialLoadTransition />
     <LayoutPageTransition />
-    <LayoutCustomCursor
-      :navItemHovered="navItemHovered"
-      :isDragging="isDragging"
-    />
+    <LayoutCustomCursor :navItemHovered="navItemHovered" />
     <main ref="scrollContainer" class="relative overflow-hidden cursor-none">
       <LayoutSidebar
         @navItemClicked="handleNavItemClicked"
