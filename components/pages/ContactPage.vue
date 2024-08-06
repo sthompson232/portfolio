@@ -1,6 +1,4 @@
 <script setup lang="ts">
-	import { getCollectionData } from '@/scripts/cms';
-	// FORM
   const formCollectionName = 'messages';
   const defaultValues = [
     {
@@ -37,7 +35,7 @@
 						You have heard enough about me, now it's time for you to tell me about your cool project!
 					</p>
 					<p class="body mb-[1.5vh]">
-						Use the contact form below if you would like to to collaborate with me, or maybe you just want to say hi!
+						Use the contact form below, or you can email me at sam@netl.io if you would like to to collaborate with me, or maybe you just want to say hi!
 					</p>
 				</div>
 			</div>

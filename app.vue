@@ -133,6 +133,5 @@
       <InnerContent ref="innerContent" :transform="appState.innerContentTranslateX" />
       <InnerContent ref="clonedInnerContent" :transform="appState.clonedInnerContentTranslateX" />
     </main>
-    <LayoutCookieConsent />
   </div>
 </template>
