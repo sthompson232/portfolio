@@ -4,16 +4,25 @@
 	import {
 		ChevronLeftIcon,
 		ChevronRightIcon,
+		CursorArrowRaysIcon,
 	} from '@heroicons/vue/24/solid';
 	// Utils
 	import { lerp, getMousePos, isTouchDevice } from '@/scripts/utils';
 
-	const chevronWidth = 24;
+	const props = defineProps(['navItemHovered', 'isDragging']);
+
+	const iconContainer = ref(null);
+	const arrow = ref(null);
 	const chevronLeft = ref(null);
 	const chevronRight = ref(null);
+
 	const innerCursor = ref(null);
 	const outerCursor = ref(null);
+
 	const dragTimeline = ref(null);
+	const hoverTimeline = ref(null);
+	const activeMouseTimeline = ref(null);
+
 	const currentMousePosition = ref({
     x: 0,
     y: 0,
@@ -46,10 +55,13 @@
   };
 
 	const handleMouseDown = () => {
+		activeMouseTimeline.value.play();
 		dragTimeline.value.play();
+		hoverTimeline.value.reverse();
 	}
 
 	const handleMouseUp = () => {
+		activeMouseTimeline.value.reverse();
 		dragTimeline.value.reverse();
 	}
 
@@ -67,11 +79,8 @@
 																				 translateY(${cursorPosition.value.y.current}px)`;
     
 		// CHEVRON POSITIONS
-		chevronLeft.value.style.transform = `translate3d(${(currentMousePosition.value.x - (chevronWidth / 2)) - 30}px,
-																										 ${currentMousePosition.value.y - (chevronWidth / 2)}px,
-																										 0)`;
-		chevronRight.value.style.transform = `translate3d(${(currentMousePosition.value.x - (chevronWidth / 2)) + 30}px,
-																											${currentMousePosition.value.y - (chevronWidth / 2)}px,
+		iconContainer.value.style.transform = `translate3d(${currentMousePosition.value.x}px,
+																											${currentMousePosition.value.y}px,
 																											0)`;
 
     requestAnimationFrame(tick);
@@ -79,10 +88,12 @@
 
 	onMounted(() => {
     if (!isTouchDevice()) {
-			dragTimeline.value = gsap.timeline({ paused: true })
+			activeMouseTimeline.value = gsap.timeline({
+				paused: true,
+			})
 				.to(innerCursor.value.querySelector('circle'), {
 					attr: {
-						r: 8
+						r: 0
 					},
 					duration: 0.3,
 					ease: 'power2.inOut',
@@ -94,11 +105,21 @@
 					duration: 0.3,
 					ease: 'power2.inOut',
 				}, 0)
-				.to([chevronLeft.value, chevronRight.value], {
-					opacity: 1,
-					duration: 0.2,
-					ease: 'power2.in',
-				}, 0.1);
+
+				dragTimeline.value = gsap.timeline({ paused: true })
+					.to([chevronLeft.value, chevronRight.value], {
+						opacity: 1,
+						duration: 0.2,
+						ease: 'power2.in',
+					}, 0.1);
+
+				hoverTimeline.value = gsap.timeline({ paused: true })
+					.to(arrow.value, {
+						opacity: 1,
+						duration: 0.2,
+						ease: 'power2.in',
+					}, 0.1);
+
 			cursorBounds.value = innerCursor.value.getBoundingClientRect();
 
       window.addEventListener('mousemove', (e) => {
@@ -109,6 +130,21 @@
 	    window.addEventListener('mouseleave', handleMouseUp);
 	    window.addEventListener('mouseup', handleMouseUp);
     }
+	});
+
+	watch(() => [props.navItemHovered, props.isDragging], () => {
+		if (props.navItemHovered) {
+			activeMouseTimeline.value.play();
+			if (!props.isDragging) {
+				hoverTimeline.value.play();
+			}
+		}
+		if (!props.navItemHovered) {
+			hoverTimeline.value.reverse();
+		}
+		if (!props.navItemHovered && !props.isDragging) {
+			activeMouseTimeline.value.reverse();
+		}
 	});
 </script>
 <template>
@@ -131,11 +167,16 @@
 		>
 			<circle class="fill-black" cx="80" cy="80" r="15"/>
 		</svg>
-		<div ref="chevronLeft" class="fixed w-[160px] h-[160px] z-cursor top-0 left-0 pointer-events-none will-change-transform scale-0 opacity-0">
-			<ChevronLeftIcon class="w-6 h-6" />
-		</div>
-		<div ref="chevronRight" class="fixed w-[160px] h-[160px] z-cursor top-0 left-0 pointer-events-none will-change-transform scale-0 opacity-0">
-			<ChevronRightIcon class="w-6 h-6" />
+		<div ref="iconContainer" class="fixed z-cursor top-0 left-0 pointer-events-none will-change-transform">
+			<div ref="chevronLeft" class="fixed right-4 top-0 -translate-y-1/2 opacity-0">
+				<ChevronLeftIcon class="w-10 h-10" />
+			</div>
+			<div ref="chevronRight" class="fixed left-4 top-0 -translate-y-1/2 opacity-0">
+				<ChevronRightIcon class="w-10 h-10" />
+			</div>
+			<div ref="arrow" class="fixed left-0 -translate-x-1/2 top-0 -translate-y-1/2 opacity-0">
+				<CursorArrowRaysIcon class="w-14 h-14" />
+			</div>
 		</div>
 	</div>
 </template>

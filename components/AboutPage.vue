@@ -1,10 +1,10 @@
 <template>
-	<div class="page-container">
+	<div class="about-page page-container">
 		<div class="inner-page-container">
 			<div class="relative w-full h-full row-start-1 row-span-2 col-start-3 col-span-2 place-self-end">
 			  <figure class="flex flex-col items-center h-full">
 			    <div class="relative flex-grow overflow-hidden">
-			      <img src="/gif/guitar.gif" alt="Playing a gig at Camden Assembly" class="object-cover w-full h-full" />
+			      <img src="/gif/guitar.gif" alt="Playing a gig at Camden Assembly" class="pointer-events-none select-none object-cover w-full h-full" />
 			    </div>
 			    <figcaption class="micro mt-2">Camden Assembly &#183; Some time in 2018</figcaption>
 			  </figure>

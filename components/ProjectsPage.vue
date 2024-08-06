@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	const testimonials = [
 		{
-	    body: '<p>Troubador unscrambled my website needs and redesigned the site to make it visually dynamic and easy to use. The design process was always collaborative and, although Troubadour was behind the technical aspects of the website, I was never left out of the loop in the process. Nothing was ever done without my first green lighting the idea. You always speak with the designer, never a faceless AI machine.</p>',
+	    body: '<p>[Sam] unscrambled my website needs and redesigned the site to make it visually dynamic and easy to use. The design process was always collaborative and, although [Sam] was behind the technical aspects of the website, I was never left out of the loop in the process. Nothing was ever done without my first green lighting the idea.</p>',
 	    website: 'wilkinsonproductions.com',
 	    name: 'Andy Wilkinson',
 	  },
@@ -28,7 +28,7 @@
 	];
 </script>
 <template>
-	<div class="page-container">
+	<div class="projects-page page-container">
 		<div class="inner-page-container">
 			<div class="relative w-full h-full row-start-1 row-span-6 col-start-3 col-span-2 place-items-end flex flex-col justify-around">
 				<div v-for="testimonial in testimonials" class="text-end">

@@ -23,19 +23,32 @@
   const innerContent = ref(null);
   const clonedInnerContent = ref(null);
 
-  const screenWidth = ref(0);
   const contentWidth = ref(0);
 
   const isDown = ref(false);
+  const isDragging = ref(false);
   const prevX = ref(0);
   const currentX = ref(0);
+
+  const navItemHovered = ref(false);
+
+  const handleNavItemClicked = (page: string) => {
+    const targetPage = document.querySelectorAll(`.${page}`);
+    const targetPageOffset1 = targetPage[0].getBoundingClientRect().left;
+    const targetPageOffset2 = targetPage[1].getBoundingClientRect().left;
+    let closestTargetOffset = targetPageOffset1;
+    const distance1 = Math.abs(currentScrollX.value - targetPageOffset1);
+    const distance2 = Math.abs(currentScrollX.value - targetPageOffset2);
+    if (distance1 > distance2) {
+      closestTargetOffset = targetPageOffset2;
+    }
+    targetScrollX.value -= closestTargetOffset;
+  }
 
   const handleMouseDown = (e) => {
     isDown.value = true;
     prevX.value = e.pageX;
-    if (scrollContainer.value) {
-      scrollContainer.value.classList.add('active', 'cursor-grabbing');
-    }
+
   };
 
   const handleMouseMove = (e) => {
@@ -43,6 +56,7 @@
     e.preventDefault();
     
     if (scrollContainer.value) {
+      isDragging.value = true;
       currentX.value = e.pageX;
       const walk = (currentX.value - prevX.value) * 3;
       targetScrollX.value += walk;
@@ -53,12 +67,14 @@
 
   const handleMouseLeave = () => {
     isDown.value = false;
+    isDragging.value = false;
     if (scrollContainer.value) {
       scrollContainer.value.classList.remove('active', 'cursor-grabbing');
     }
   };
   const handleMouseUp = () => {
     isDown.value = false;
+    isDragging.value = false;
     if (scrollContainer.value) {
       scrollContainer.value.classList.remove('active', 'cursor-grabbing');
     }
@@ -99,7 +115,6 @@
     window.addEventListener('resize', () => {
       currentScrollX.value = 0;
       targetScrollX.value = 0;
-      screenWidth.value = innerContent.value.offsetWidth;
       contentWidth.value = innerContent.value.scrollWidth;
     });
 
@@ -118,9 +133,16 @@
   <div>
     <LayoutInitialLoadTransition />
     <LayoutPageTransition />
-    <LayoutCustomCursor />
+    <LayoutCustomCursor
+      :navItemHovered="navItemHovered"
+      :isDragging="isDragging"
+    />
     <main ref="scrollContainer" class="relative overflow-hidden cursor-none">
-      <LayoutSidebar />
+      <LayoutSidebar
+        @navItemClicked="handleNavItemClicked"
+        @navItemMouseEnter="navItemHovered = true"
+        @navItemMouseLeave="navItemHovered = false"
+      />
       <div ref="innerContent" class="fixed inset-0 flex flex-row flex-nowrap will-change-transform" style="transform: translate3d(0, 0, 0);">
         <HomePage />
         <CareerPage />

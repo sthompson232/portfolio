@@ -1,5 +1,5 @@
 <template>
-	<div class="page-container">
+	<div class="home-page page-container">
 		<div class="inner-page-container">
 			<div class="relative w-full h-full row-start-1 row-span-6 col-start-3 col-span-2 place-self-end">
 				<figure class="flex flex-col items-center h-full">

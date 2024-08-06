@@ -26,7 +26,10 @@
     @apply max-w-sm hsm:max-w-lg hmd:max-w-xl pointer-events-none select-none text-body text-black text-balance
   }
   .micro {
-    @apply max-w-2xl text-black text-micro font-medium font-micro uppercase pointer-events-none select-none mb-2
+    @apply max-w-2xl text-black text-micro font-medium font-micro uppercase pointer-events-none select-none mb-2 px-4
+  }
+  .nav-item {
+    @apply pointer-events-auto micro
   }
   .text-input {
     @apply shadow-sm block w-full border border-neutral-200 rounded-md p-3 caret-accent focus:outline-accent my-2

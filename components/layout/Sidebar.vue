@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+	const emit = defineEmits(['navItemClicked', 'navItemMouseEnter', 'navItemMouseLeave']);
+
 	const currentTime = ref(null);
 
 	onMounted(() => {
@@ -13,7 +16,16 @@
     }
     updateTime();
     setInterval(updateTime, 1000);
+
+		document.querySelectorAll('.nav-item').forEach((navItem) => {
+			navItem.addEventListener('mouseenter', () => emit('navItemMouseEnter'));
+			navItem.addEventListener('mouseleave', () => emit('navItemMouseLeave'));
+		})
 	});
+
+	const navigate = (page: string) => {
+		emit('navItemClicked', page);
+	}
 </script>
 <template>
 	<div class="fixed w-12 h-screen z-fixed top-0 left-0 bg-white grid gap-16 grid-cols-1 grid-rows-3 content-between py-4 border-r border-neutral-300">
@@ -38,11 +50,11 @@
 			</svg>
 		</div>
 		<div class="flex rotate-180" style="writing-mode: vertical-rl;">
-			<ul class="flex space-y-4 micro">
-				<li class="self-center">Home</li>
-				<li class="self-center">About</li>
-				<li class="self-center">Projects</li>
-				<li class="self-center">Contact</li>
+			<ul class="flex space-y-4">
+				<li @click="navigate('home-page')" class="self-center nav-item">Home</li>
+				<li @click="navigate('about-page')" class="self-center nav-item">About</li>
+				<li @click="navigate('projects-page')" class="self-center nav-item">Projects</li>
+				<li @click="navigate('contact-page')" class="self-center nav-item">Contact</li>
 			</ul>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <template>
-	<div class="page-container">
+	<div class="contact-page page-container">
 		<div class="inner-page-container">
 			<div class="w-full h-full row-start-1 row-span-3 col-start-3 col-span-2 flex flex-col justify-end">
 				<div>
