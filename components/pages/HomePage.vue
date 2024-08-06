@@ -6,7 +6,7 @@
 			    <div class="relative flex-grow h-full overflow-hidden">
 			      <img src="/images/index.jpg" alt="Me as best man, June 15th 2024" class="pointer-events-none select-none object-cover w-full h-full" />
 			    </div>
-			    <figcaption class="micro mt-2">The best man &#183; June 15<sup>th</sup>, 2024</figcaption>
+			    <figcaption class="micro mt-2">The best man &#183; 2024</figcaption>
 			  </figure>
 			</div>
 			<div class="w-full h-full row-start-1 row-span-3 col-start-1 col-span-2 flex items-center">

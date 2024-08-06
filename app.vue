@@ -121,10 +121,13 @@
 
 <template>
   <div>
-    <LayoutInitialLoadTransition />
-    <LayoutPageTransition />
+    <LayoutInitialLoadTransition :scrollContainer="scrollContainer" />
     <LayoutCustomCursor :navItemHovered="navItemHovered" />
-    <main ref="scrollContainer" class="relative overflow-hidden cursor-none">
+    <main
+      ref="scrollContainer"
+      class="bg-white z-fixed overflow-hidden cursor-none fixed inset-0"
+      style="transform: translateY(150%) rotate(12deg);"
+    >
       <LayoutSidebar
         @navItemClicked="handleNavItemClicked"
         @navItemMouseEnter="navItemHovered = true"
