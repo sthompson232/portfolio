@@ -16,7 +16,7 @@
     <PagesShowcase1Page />
     <PagesShowcase2Page />
     <PagesShowcase3Page />
-    <PagesAboutPage />
+    <!-- <PagesAboutPage /> -->
     <PagesContactPage />
   </div>
 </template>
